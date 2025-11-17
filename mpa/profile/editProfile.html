@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - MoreMusic</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../images/icon.ico" type="image/x-icon">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center" href="homepage.html">
+                    <img 
+                        src="../images/icon_bg_white.png" 
+                        alt="Logo" 
+                        class="rounded-circle me-2 mr-3"
+                        style="width: 40px; height: 40px; object-fit: cover;"
+                    >
+                    <span class="fs-4">TuneLink</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="profile.html"><i class="bi bi-person-fill"></i> Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="editProfile.html"><i class="bi bi-gear-fill"></i> Settings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../auth/logoff.html"><i class="bi bi-box-arrow-in-left"></i> Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow-1 py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header bg-dark text-white">
+                            <h3 class="card-title mb-0">Edit Your Profile</h3>
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input type="text" class="form-control" id="username" maxlength="40" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" maxlength="40" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="password" minlength="8" maxlength="40">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="description" class="form-label">Description</label>
+                                    <textarea class="form-control" id="description" rows="3" maxlength="1000"></textarea>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="newsletter">
+                                    <label class="form-check-label" for="newsletter">
+                                        Subscribe to Newsletter
+                                    </label>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Choose Profile Picture</label>
+
+                                    <div class="d-flex gap-3">
+                                    
+                                        <!-- Option 1 -->
+                                        <label class="text-center">
+                                            <input type="radio" name="avatar" value="female" class="d-none" required>
+                                            <img src="../images/profile-dummy/femal_round.png"
+                                                 style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; cursor: pointer; border: 3px solid transparent;"
+                                                 onclick="this.previousElementSibling.checked = true; selectAvatar(this)">
+                                            <div>Female</div>
+                                        </label>
+                                    
+                                        <!-- Option 2 -->
+                                        <label class="text-center">
+                                            <input type="radio" name="avatar" value="male" class="d-none">
+                                            <img src="../images/profile-dummy/male_round.png"
+                                                 style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; cursor: pointer; border: 3px solid transparent;"
+                                                 onclick="this.previousElementSibling.checked = true; selectAvatar(this)">
+                                            <div>Male</div>
+                                        </label>
+                                    
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-2">&copy; 2025 MoreMusic. All rights reserved.</p>
+                    <p>
+                        <a href="" class="text-decoration-none text-white-50 me-3">Imprint</a>
+                        <a href="" class="text-decoration-none text-white-50">Data Protection</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+</body>
+<script>
+    function selectAvatar(img) {
+    // Alle Bilder zurücksetzen
+    document.querySelectorAll('input[name="avatar"]').forEach(input => {
+        input.nextElementSibling.style.border = "3px solid transparent";
+    });
+
+    // Ausgewähltes Bild hervorheben
+    img.style.border = "3px solid #0d6efd";
+}
+</script>
+</html>
