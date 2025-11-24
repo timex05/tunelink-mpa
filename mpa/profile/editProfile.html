@@ -7,6 +7,7 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="../images/icon.ico" type="image/x-icon">
+    <script src="../js/jquery-3.7.1.min.js"></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
     <header>
@@ -124,14 +125,15 @@
     
 </body>
 <script>
-    function selectAvatar(img) {
+function selectAvatar(img) {
     // Alle Bilder zurücksetzen
-    document.querySelectorAll('input[name="avatar"]').forEach(input => {
-        input.nextElementSibling.style.border = "3px solid transparent";
+    $('input[name="avatar"]').each(function () {
+        $(this).next().css('border', '3px solid transparent');
     });
 
     // Ausgewähltes Bild hervorheben
-    img.style.border = "3px solid #0d6efd";
+    $(img).css('border', '3px solid #0d6efd');
 }
+
 </script>
 </html>
