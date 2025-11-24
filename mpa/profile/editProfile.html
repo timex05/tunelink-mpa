@@ -7,7 +7,47 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="../images/icon.ico" type="image/x-icon">
-    <script src="../js/jquery-3.7.1.min.js"></script>
+    <style>
+        .avatar-label {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .avatar-label:hover {
+            transform: scale(1.05);
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .avatar-label input[type="radio"]:checked + .avatar-container .avatar-img {
+            border-color: #0d6efd;
+            box-shadow: 0 0 10px rgba(13, 110, 253, 0.5);
+        }
+
+        .avatar-label:hover .avatar-img {
+            border-color: #0d6efd;
+            opacity: 0.8;
+        }
+
+        .cursor-pointer {
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
     <header>
@@ -74,29 +114,62 @@
                                         Subscribe to Newsletter
                                     </label>
                                 </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Choose Profile Picture</label>
+                                <div class="mb-4">
+                                    <h5 class="mb-4"><i class="bi bi-image"></i> Choose Profile Picture</h5>
 
-                                    <div class="d-flex gap-3">
-                                    
-                                        <!-- Option 1 -->
-                                        <label class="text-center">
-                                            <input type="radio" name="avatar" value="female" class="d-none" required>
-                                            <img src="../images/profile-dummy/femal_round.png"
-                                                 style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; cursor: pointer; border: 3px solid transparent;"
-                                                 onclick="this.previousElementSibling.checked = true; selectAvatar(this)">
-                                            <div>Female</div>
-                                        </label>
-                                    
-                                        <!-- Option 2 -->
-                                        <label class="text-center">
-                                            <input type="radio" name="avatar" value="male" class="d-none">
-                                            <img src="../images/profile-dummy/male_round.png"
-                                                 style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; cursor: pointer; border: 3px solid transparent;"
-                                                 onclick="this.previousElementSibling.checked = true; selectAvatar(this)">
-                                            <div>Male</div>
-                                        </label>
-                                    
+                                    <!-- Custom Avatar Section -->
+                                    <div class="mb-4">
+                                        <h6 class="text-secondary mb-3">Custom Avatar</h6>
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" id="customAvatarUrl" placeholder="Enter image URL">
+                                            <button type="button" class="btn btn-outline-primary" onclick="addCustomAvatar(document.getElementById('customAvatarUrl').value)">
+                                                <i class="bi bi-plus-circle"></i> Add
+                                            </button>
+                                        </div>
+                                        <div id="customAvatarBox" class="d-flex flex-wrap gap-4">
+                                        </div>
+                                    </div>
+
+                                    <!-- Predefined Avatars Section -->
+                                    <div class="mb-4">
+                                        <h6 class="text-secondary mb-3">Predefined Avatars</h6>
+                                        <div class="d-flex flex-wrap gap-4">
+                                        
+                                            <!-- Option 1 -->
+                                            <label class="text-center cursor-pointer avatar-label">
+                                                <input type="radio" name="avatar" value="female" class="d-none" required>
+                                                <div class="avatar-container">
+                                                    <img src="../images/profile-dummy/femal_round.png"
+                                                         class="avatar-img"
+                                                         onclick="this.parentElement.parentElement.previousElementSibling.checked = true; selectAvatar(this.parentElement.parentElement, {type: 'default', value: 'female'})">
+                                                </div>
+                                                <div class="small mt-2">Female</div>
+                                            </label>
+                                        
+                                            <!-- Option 2 -->
+                                            <label class="text-center cursor-pointer avatar-label">
+                                                <input type="radio" name="avatar" value="male" class="d-none">
+                                                <div class="avatar-container">
+                                                    <img src="../images/profile-dummy/male_round.png"
+                                                         class="avatar-img"
+                                                         onclick="this.parentElement.parentElement.previousElementSibling.checked = true; selectAvatar(this.parentElement.parentElement, {type: 'default', value: 'male'})">
+                                                </div>
+                                                <div class="small mt-2">Male</div>
+                                            </label>
+                                        
+                                        </div>
+                                    </div>
+
+                                    <!-- DiceBear Avatars Section -->
+                                    <div class="mb-4">
+                                        <div class="d-flex align-items-center justify-content-between mb-3">
+                                            <h6 class="text-secondary mb-0">AI Generated Avatars</h6>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="loadDiceBearAvatars()">
+                                                <i class="bi bi-arrow-clockwise"></i>
+                                            </button>
+                                        </div>
+                                        <div id="diceBearAvatarBox" class="d-flex flex-wrap gap-4">
+                                        </div>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary w-100">Save Changes</button>
@@ -125,15 +198,57 @@
     
 </body>
 <script>
-function selectAvatar(img) {
-    // Alle Bilder zurücksetzen
-    $('input[name="avatar"]').each(function () {
-        $(this).next().css('border', '3px solid transparent');
+    function selectAvatar(label, data) {
+        // Alle Avatar-Container zurücksetzen
+        document.querySelectorAll('.avatar-label').forEach(l => {
+            l.querySelector('input[type="radio"]').checked = false;
+        });
+
+        // Ausgewähltes Avatar aktivieren
+        label.querySelector('input[type="radio"]').checked = true;
+    }
+
+    function addCustomAvatar(url){
+        if (!url) {
+            alert('Please enter a valid URL');
+            return;
+        }
+        
+        const escapedUrl = url.replace(/"/g, '&quot;');
+        const html = `<label class="text-center cursor-pointer avatar-label">
+                        <input type="radio" name="avatar" value="" class="d-none" required>
+                        <div class="avatar-container">
+                            <img src="${escapedUrl}" 
+                                 class="avatar-img"
+                                 onerror="this.style.display='none'; this.parentElement.parentElement.style.display='none';"
+                                 onclick="selectAvatar(this.closest('.avatar-label'), {type: 'custom', url: '${escapedUrl}'})">
+                        </div>
+                    </label>`;
+        document.getElementById("customAvatarBox").innerHTML += html;
+        document.getElementById("customAvatarUrl").value = "";
+    }
+
+    function loadDiceBearAvatars(){
+        document.getElementById("diceBearAvatarBox").innerHTML = "";
+        for(let i = 0; i < 20; i++){
+            let randomString = Math.floor(100000 + Math.random() * 900000).toString();
+            const url = `https://api.dicebear.com/9.x/avataaars/svg?seed=${randomString}`;
+
+            const html = `<label class="text-center cursor-pointer avatar-label">
+                        <input type="radio" name="avatar" value="" class="d-none" required>
+                        <div class="avatar-container">
+                            <img src="${url}" 
+                                 class="avatar-img"
+                                 onclick="selectAvatar(this.closest('.avatar-label'), {type: 'dicebear', url: '${url}'})">
+                        </div>
+                    </label>`;
+            document.getElementById("diceBearAvatarBox").innerHTML += html;
+        }
+    }
+
+    // DiceBear Avatars beim Laden der Seite initialisieren
+    document.addEventListener('DOMContentLoaded', function() {
+        loadDiceBearAvatars();
     });
-
-    // Ausgewähltes Bild hervorheben
-    $(img).css('border', '3px solid #0d6efd');
-}
-
 </script>
 </html>
