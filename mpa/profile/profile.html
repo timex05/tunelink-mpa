@@ -4,9 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile - TuneLink</title>
+    <link rel="shortcut icon" href="../images/icon.ico" type="image/x-icon">
+
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/bootstrap-icons.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href="../images/icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/general.css">
+
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/general.js"></script>
+    <script src="../js/profile.js"></script>
+
+    
 </head>
 <body class="d-flex flex-column min-vh-100">
     <header>
@@ -44,7 +53,7 @@
             <div class="container">
                 <div class="d-flex align-items-center gap-3">
                   <div class="flex-shrink-0 mr-3">
-                    <img 
+                    <img id="user-image"
                       src="../images/profile-dummy/femal_round.png" 
                       alt="Username" 
                       class="rounded-circle" 
@@ -52,8 +61,8 @@
                     >
                   </div>
                   <div>
-                    <h1 class="mb-1 fs-3">Username</h1>
-                    <p class="text-muted mb-0">User Profile</p>
+                    <h1 id="user-name" class="mb-1 fs-3">Username</h1>
+                    <p id="user-description" class="text-muted mb-0">User Profile</p>
                   </div>
                 </div>
             </div>
@@ -65,8 +74,8 @@
             <div class="row mb-5">
                 <div class="col-12">
                     <h3 class="mb-4">My Trees</h3>
-                    <div class="row g-4">
-                        <div class="col-12 col-md-6 col-lg-4">
+                    <div id="my-tree-box" class="row g-4">
+                        <!-- <div class="col-12 col-md-6 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">Tree 1</h5>
@@ -137,7 +146,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -145,8 +154,8 @@
             <div class="row mb-5">
                 <div class="col-12">
                     <h3 class="mb-4">My Likes</h3>
-                    <div class="row g-4">
-                        <div class="col-12 col-md-6 col-lg-4">
+                    <div id="like-box" class="row g-4">
+                        <!-- <div class="col-12 col-md-6 col-lg-4">
                             <a href="../data/tree.html?id=tree1" target="_blank" class="text-decoration-none">
                                 <div class="card h-100">
                                     <div class="card-body text-center">
@@ -199,16 +208,16 @@
                                     </div>
                                 </div>
                             </a>
-                        </div>
-                    </div>
+                        </div> -->
+                    </div> 
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-12">
                     <h3 class="mb-4">My Comments</h3>
-                    <div class="row g-4">
-                        <div class="col-12 col-md-6 col-lg-4">
+                    <div id="comment-box" class="row g-4">
+                        <!-- <div class="col-12 col-md-6 col-lg-4">
                             <a href="../data/tree.html?id=tree1" target="_blank" class="text-decoration-none">
                                 <div class="card h-100">
                                     <div class="card-body text-center">
@@ -261,7 +270,7 @@
                                     </div>
                                 </div>
                             </a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

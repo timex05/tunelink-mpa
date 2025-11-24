@@ -4,9 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings - TuneLink</title>
+    <link rel="shortcut icon" href="../images/icon.ico" type="image/x-icon">
+
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/bootstrap-icons.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href="../images/icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/general.css">
+    
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/general.js"></script>
+    <script src="../js/editProfile.js"></script>
     <style>
         .avatar-label {
             cursor: pointer;
@@ -53,7 +60,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand d-flex align-items-center" href="homepage.html">
+                <a class="navbar-brand d-flex align-items-center" href="../homepage.html">
                     <img 
                         src="../images/icon_bg_white.png" 
                         alt="Logo" 
@@ -91,7 +98,7 @@
                             <h3 class="card-title mb-0">Edit Your Profile</h3>
                         </div>
                         <div class="card-body">
-                            <form>
+                            <form id="editform">
                                 <div class="mb-3">
                                     <label for="username" class="form-label">Username</label>
                                     <input type="text" class="form-control" id="username" maxlength="40" required>
@@ -102,7 +109,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="password" minlength="8" maxlength="40">
+                                    <input type="password" class="form-control" id="password" minlength="8" maxlength="40" placeholder="********">
                                 </div>
                                 <div class="mb-3">
                                     <label for="description" class="form-label">Description</label>
@@ -116,7 +123,10 @@
                                 </div>
                                 <div class="mb-4">
                                     <h5 class="mb-4"><i class="bi bi-image"></i> Choose Profile Picture</h5>
-
+                                    <div id="currentAvatar" class="mb-4">
+                                        
+                                        </div>
+                                    </div>
                                     <!-- Custom Avatar Section -->
                                     <div class="mb-4">
                                         <h6 class="text-secondary mb-3">Custom Avatar</h6>
@@ -136,23 +146,21 @@
                                         <div class="d-flex flex-wrap gap-4">
                                         
                                             <!-- Option 1 -->
-                                            <label class="text-center cursor-pointer avatar-label">
+                                            <label id="default-female" class="text-center cursor-pointer avatar-label">
                                                 <input type="radio" name="avatar" value="female" class="d-none" required>
                                                 <div class="avatar-container">
                                                     <img src="../images/profile-dummy/femal_round.png"
-                                                         class="avatar-img"
-                                                         onclick="this.parentElement.parentElement.previousElementSibling.checked = true; selectAvatar(this.parentElement.parentElement, {type: 'default', value: 'female'})">
+                                                         class="avatar-img">
                                                 </div>
                                                 <div class="small mt-2">Female</div>
                                             </label>
                                         
                                             <!-- Option 2 -->
-                                            <label class="text-center cursor-pointer avatar-label">
+                                            <label id="default-female" class="text-center cursor-pointer avatar-label">
                                                 <input type="radio" name="avatar" value="male" class="d-none">
                                                 <div class="avatar-container">
                                                     <img src="../images/profile-dummy/male_round.png"
-                                                         class="avatar-img"
-                                                         onclick="this.parentElement.parentElement.previousElementSibling.checked = true; selectAvatar(this.parentElement.parentElement, {type: 'default', value: 'male'})">
+                                                         class="avatar-img">
                                                 </div>
                                                 <div class="small mt-2">Male</div>
                                             </label>
@@ -197,58 +205,4 @@
 
     
 </body>
-<script>
-    function selectAvatar(label, data) {
-        // Alle Avatar-Container zurücksetzen
-        document.querySelectorAll('.avatar-label').forEach(l => {
-            l.querySelector('input[type="radio"]').checked = false;
-        });
-
-        // Ausgewähltes Avatar aktivieren
-        label.querySelector('input[type="radio"]').checked = true;
-    }
-
-    function addCustomAvatar(url){
-        if (!url) {
-            alert('Please enter a valid URL');
-            return;
-        }
-        
-        const escapedUrl = url.replace(/"/g, '&quot;');
-        const html = `<label class="text-center cursor-pointer avatar-label">
-                        <input type="radio" name="avatar" value="" class="d-none" required>
-                        <div class="avatar-container">
-                            <img src="${escapedUrl}" 
-                                 class="avatar-img"
-                                 onerror="this.style.display='none'; this.parentElement.parentElement.style.display='none';"
-                                 onclick="selectAvatar(this.closest('.avatar-label'), {type: 'custom', url: '${escapedUrl}'})">
-                        </div>
-                    </label>`;
-        document.getElementById("customAvatarBox").innerHTML += html;
-        document.getElementById("customAvatarUrl").value = "";
-    }
-
-    function loadDiceBearAvatars(){
-        document.getElementById("diceBearAvatarBox").innerHTML = "";
-        for(let i = 0; i < 20; i++){
-            let randomString = Math.floor(100000 + Math.random() * 900000).toString();
-            const url = `https://api.dicebear.com/9.x/avataaars/svg?seed=${randomString}`;
-
-            const html = `<label class="text-center cursor-pointer avatar-label">
-                        <input type="radio" name="avatar" value="" class="d-none" required>
-                        <div class="avatar-container">
-                            <img src="${url}" 
-                                 class="avatar-img"
-                                 onclick="selectAvatar(this.closest('.avatar-label'), {type: 'dicebear', url: '${url}'})">
-                        </div>
-                    </label>`;
-            document.getElementById("diceBearAvatarBox").innerHTML += html;
-        }
-    }
-
-    // DiceBear Avatars beim Laden der Seite initialisieren
-    document.addEventListener('DOMContentLoaded', function() {
-        loadDiceBearAvatars();
-    });
-</script>
 </html>

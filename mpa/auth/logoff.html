@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logout - TuneLink</title>
+    <link rel="shortcut icon" href="../images/icon.ico" type="image/x-icon">
+
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/bootstrap-icons.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href="../images/icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/general.css">
+    
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/general.js"></script>
+    <script src="../js/logoff.js"></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
     <header>
@@ -51,7 +57,7 @@
                         </div>
                         <div class="card-body py-5">
                             <p class="lead mb-4">Are you sure you want to logout?</p>
-                            <button class="btn btn-danger btn-lg">Logout</button>
+                            <button id="logoff" class="btn btn-danger btn-lg">Logout</button>
                             <a href="../homepage.html" class="btn btn-secondary btn-lg ms-2">Cancel</a>
                         </div>
                     </div>
@@ -73,7 +79,5 @@
             </div>
         </div>
     </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
