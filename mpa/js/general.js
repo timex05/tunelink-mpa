@@ -9,14 +9,16 @@ function verifyToken(redirect, newAuthentication){
         } else {
             window.location.href = frontendDomain + "/" + redirect;
         }
+        return false;
         
     }
     
 }
 
 function isTokenValid(){
-    if(!localStorage.getItem('token') || !localStorage.getItem('expiresAt')) return false;
-    if(new Date().getTime() > new Date(localStorage.getItem('expiresAt'))) return false;
+    const token = getToken();
+    if(!token) return false;
+    if(new Date().getTime() > new Date(token.expiresAt)) return false;
 
     return true;
 }
@@ -25,17 +27,35 @@ function setToken(token){
     removeToken();
     const now = new Date();
     const expiresAt = new Date(now.getTime() + token.validInMinutes * 60000);
-    localStorage.setItem('token', token.value);
-    localStorage.setItem('expiresAt', expiresAt);
+    const newToken = {
+        value: token.value,
+        expiresAt: expiresAt
+    }
+    localStorage.setItem('token', JSON.stringify(newToken));
 }
 
-function getToken(){
-    return localStorage.getItem('token');
+function getTokenString(){
+    return getToken().value;
 }
 
 function removeToken(){
     localStorage.removeItem('token');
-    localStorage.removeItem('expiresAt');
+}
+
+function getTokenForUrl(){
+    return (isTokenValid() ? "token=" + getTokenString() : "");
+}
+
+function getToken(){
+    return JSON.parse(localStorage.getItem('token'));
+}
+
+function getImagePathFromUser(user){
+    let imgUrl = user.profileImg.url;
+    if(!imgUrl || imgUrl == ''){
+        imgUrl = `images/profile-dummy/${user.profileImg.default}_round.png`;
+    }
+    return imgUrl;
 }
 
 $(function () {
@@ -47,3 +67,78 @@ $(function () {
         $(".nlogged").show();
     }
 });
+
+function getTreeCard(tree, imgPrefix){
+    return getTreeCard(tree, imgPrefix, false);
+}
+
+function getTreeCardWithEdit(tree, imgPrefix){
+    return getTreeCard(tree, imgPrefix, true);
+}
+
+function getTreeCard(tree, imgPrefix, withEdit){
+    const cardHtml = `
+    <div class="col-12 col-md-6 col-lg-4">
+        <div class="card tree-card position-relative text-white overflow-hidden h-100 shadow-sm">
+                
+            <!-- Unscharfer Hintergrund -->
+            <div class="bg-blur" 
+                 style="background-image: url('${tree.cover || imgPrefix + "images/dummyTreeCover.png"}');">
+            </div>
+                
+            <div class="card-body position-relative">
+                
+                <!-- User Bereich -->
+                <div class="d-flex align-items-center mb-3">
+                    <a href="${imgPrefix}data/user.html?id=${tree.owner.id}" class="d-flex align-items-center text-white text-decoration-none">
+                        <img src="${imgPrefix}${getImagePathFromUser(tree.owner)}" 
+                             class="rounded-circle me-2" 
+                             width="40" height="40" 
+                             alt="Profile">
+                        <strong>${tree.owner.name}</strong>
+                    </a>
+                </div>
+                <a href="${imgPrefix}data/tree.html?id=${tree.id}" target="_blank" class="text-reset text-decoration-none">
+                <!-- Titel -->
+                <h5 class="card-title">${tree.title}</h5>
+                
+                <!-- Interpret & Beschreibung -->
+                <p class="mb-1"><strong>Interpret:</strong> ${tree.interpret}</p>
+                <p class="text-light">${tree.description}</p>
+                
+                <!-- Icons: Likes, Comments, Clicks -->
+                <div class="d-flex gap-3 mt-3">
+                    <span class="d-flex align-items-center">
+                        <i class="bi bi-heart-fill me-1"></i> ${tree.likes.count}
+                    </span>
+                    <span class="d-flex align-items-center">
+                        <i class="bi bi-chat-left-text-fill me-1"></i> ${tree.comments}
+                    </span>
+                    <span class="d-flex align-items-center">
+                        <i class="bi bi-hand-index me-1"></i> ${tree.clicks}
+                    </span>
+                </div>
+
+                </a>
+                
+                <!-- Klickbare Tree-Seite -->
+                <div class="mt-3">
+                    ${withEdit ? 
+                        `<a href="${imgPrefix}data/editTree.html?id=${tree.id}" target="_blank" class="btn btn-primary btn-sm">
+                            <i class="bi bi-pencil-fill"></i>
+                        </a>
+                        <a href="${imgPrefix}data/deleteTree.html?id=${tree.id}" target="_blank" class="btn btn-danger btn-sm">
+                            <i class="bi bi-trash-fill"></i>
+                        </a>
+                        ` 
+                        
+                        : ""}
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    `;
+
+    return cardHtml;
+}

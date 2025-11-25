@@ -82,7 +82,7 @@ $(function () {
     });
 
     $.ajax({
-        url: backendDomain + `/api/user/me?token=${getToken()}`,
+        url: backendDomain + `/api/user/me?${getTokenForUrl()}`,
         type: 'get',
         dataType: 'json',
         contentType: 'application/json; charset=UTF-8',
@@ -134,7 +134,7 @@ $(function () {
             dataType: 'json',
             contentType: 'application/json; charset=UTF-8',
             data: JSON.stringify({ 
-                token: getToken(),
+                token: getTokenString(),
                 user: {
                     name: username,
                     email: email,

@@ -4,15 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile - TuneLink</title>
+    <link rel="shortcut icon" href="../images/icon.ico" type="image/x-icon">
+
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/bootstrap-icons.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href="../images/icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/general.css">
+
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/general.js"></script>
+    <script src="../js/user.js"></script>
+    
 </head>
 <body class="d-flex flex-column min-vh-100">
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand d-flex align-items-center" href="homepage.html">
+                <a class="navbar-brand d-flex align-items-center" href="../homepage.html">
                     <img 
                         src="../images/icon_bg_white.png" 
                         alt="Logo" 
@@ -25,17 +33,17 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item nlogged">
                             <a class="nav-link" href="../auth/login.html"><i class="bi bi-box-arrow-in-right"></i> Login/Signup</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item logged">
                             <a class="nav-link" href="../profile/profile.html"><i class="bi bi-person-fill"></i> Profile</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item logged">
                             <a class="nav-link" href="../profile/editProfile.html"><i class="bi bi-gear-fill"></i> Settings</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item logged">
                             <a class="nav-link" href="../auth/logoff.html"><i class="bi bi-box-arrow-in-left"></i> Logout</a>
                         </li>
                     </ul>
@@ -47,16 +55,16 @@
           <div class="container">
             <div class="d-flex align-items-center gap-3">
               <div class="flex-shrink-0 mr-3">
-                <img 
-                  src="../images/profile-dummy/femal_round.png" 
+                <img id="user-img"
+                  src="../images/profile-dummy/female_round.png" 
                   alt="Username" 
                   class="rounded-circle" 
                   style="width: 64px; height: 64px; object-fit: cover;"
                 >
               </div>
               <div>
-                <h1 class="mb-1 fs-3">Username</h1>
-                <p class="text-muted mb-0">User Profile</p>
+                <h1 id="user-name" class="mb-1 fs-3">Username</h1>
+                <p id="user-description" class="text-muted mb-0">User Profile</p>
               </div>
           
             </div>
@@ -70,8 +78,8 @@
             <div class="row">
                 <div class="col-12">
                     <h3 class="mb-4">Linktrees</h3>
-                    <div class="row g-4">
-                        <div class="col-12 col-md-6 col-lg-4">
+                    <div id="treebox" class="row g-4">
+                        <!-- <div class="col-12 col-md-6 col-lg-4">
                             <a href="tree.html?id=tree1" target="_blank" class="text-decoration-none">
                                 <div class="card h-100 shadow-sm">
                                     <div class="card-body text-center">
@@ -130,7 +138,7 @@
                                     </div>
                                 </div>
                             </a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

@@ -7,7 +7,7 @@ $(function () {
             type: 'delete',
             dataType: 'json',
             contentType: 'application/json; charset=UTF-8',
-            data: JSON.stringify({ token: localStorage.getItem('token') }),
+            data: JSON.stringify({ token: getTokenString() }),
             success: function (data) {
                 removeToken();
                 alert(data.message);

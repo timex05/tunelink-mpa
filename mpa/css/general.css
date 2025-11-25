@@ -1,3 +1,31 @@
 .logged {
     display: none;
 }
+
+.tree-card {
+    position: relative;
+    color: white;
+    overflow: hidden;
+
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+
+}
+
+.tree-card .bg-blur {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: blur(14px) brightness(0.55);
+    transform: scale(1.2);
+    z-index: 1;
+}
+
+.tree-card .card-body {
+    position: relative;
+    z-index: 2;
+}
+
+.tree-card:hover {
+    transform: translateY(-5px);
+}
