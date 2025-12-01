@@ -7,7 +7,7 @@ $(function() {
         contentType: 'application/json; charset=UTF-8',
         success: function (data) {
             console.log(data);
-            $('#user-image').attr('src', `../${getImagePathFromUser(data.user)}`);
+            $('#user-image').attr('src', `${getImagePathFromUser(data.user, "../")}`);
             $('#user-name').text(data.user.name);
             $('#user-description').text(data.user.description);
         },
@@ -24,8 +24,12 @@ $(function() {
         success: function (data) {
             console.log(data);
             const $container = $('#my-tree-box');
+            if(data.treelist.length == 0){
+                $container.append(nothingBox());
+            }
+
             data.treelist.forEach(tree => {
-                $container.append(getTreeCardWithEdit(tree, "../"));
+                $container.append(getTreeCard(tree, "../"));
             });
         },
         error: function (xhr, ajaxOptions, thrownError) {
@@ -34,13 +38,16 @@ $(function() {
     });
     
     $.ajax({
-        url: backendDomain + `/api/likes/tree?${getTokenForUrl()}`,
+        url: backendDomain + `/api/like/tree?${getTokenForUrl()}`,
         type: 'get',
         dataType: 'json',
         contentType: 'application/json; charset=UTF-8',
         success: function (data) {
             console.log(data);
             const $container = $('#like-box');
+            if(data.treelist.length == 0){
+                $container.append(nothingBox());
+            }
             data.treelist.forEach(tree => {
                 $container.append(getTreeCard(tree, "../"));
             });
@@ -51,13 +58,16 @@ $(function() {
     });
 
     $.ajax({
-        url: backendDomain + `/api/comments/tree?${getTokenForUrl()}`,
+        url: backendDomain + `/api/comment/tree?${getTokenForUrl()}`,
         type: 'get',
         dataType: 'json',
         contentType: 'application/json; charset=UTF-8',
         success: function (data) {
             console.log(data);
             const $container = $('#comment-box');
+            if(data.treelist.length == 0){
+                $container.append(nothingBox());
+            }
             data.treelist.forEach(tree => {
                 $container.append(getTreeCard(tree, "../"));
             });

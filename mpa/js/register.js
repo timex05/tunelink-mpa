@@ -1,12 +1,12 @@
 $(function () {
     $('#registerform').on('submit', function (e) {
         e.preventDefault();
-        const name = $('#name').val();
+        const name = $('#username').val();
         const email = $('#email').val();
         const password = $('#password').val();
 
         $.ajax({
-            url: domain + '/api/user',
+            url: backendDomain + '/api/user',
             type: 'post',
             dataType: 'json',
             contentType: 'application/json; charset=UTF-8',

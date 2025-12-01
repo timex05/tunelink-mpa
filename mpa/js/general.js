@@ -1,5 +1,11 @@
-const backendDomain = "http://localhost:5000";
+const backendDomain = "http://localhost:3000";
 const frontendDomain = "D:\\Timo\\moremusic\\mpa"
+
+const urlParams = new URLSearchParams(window.location.search);
+
+function getUrlParam(key){
+    return urlParams.get(key);
+}
 
 function verifyToken(redirect, newAuthentication){
     if(!isTokenValid()){
@@ -10,9 +16,7 @@ function verifyToken(redirect, newAuthentication){
             window.location.href = frontendDomain + "/" + redirect;
         }
         return false;
-        
     }
-    
 }
 
 function isTokenValid(){
@@ -50,10 +54,10 @@ function getToken(){
     return JSON.parse(localStorage.getItem('token'));
 }
 
-function getImagePathFromUser(user){
+function getImagePathFromUser(user, imgPrefix){
     let imgUrl = user.profileImg.url;
     if(!imgUrl || imgUrl == ''){
-        imgUrl = `images/profile-dummy/${user.profileImg.default}_round.png`;
+        imgUrl = `${imgPrefix}images/profile-dummy/${user.profileImg.default}_round.png`;
     }
     return imgUrl;
 }
@@ -68,15 +72,9 @@ $(function () {
     }
 });
 
+
 function getTreeCard(tree, imgPrefix){
-    return getTreeCard(tree, imgPrefix, false);
-}
-
-function getTreeCardWithEdit(tree, imgPrefix){
-    return getTreeCard(tree, imgPrefix, true);
-}
-
-function getTreeCard(tree, imgPrefix, withEdit){
+    console.log(tree);
     const cardHtml = `
     <div class="col-12 col-md-6 col-lg-4">
         <div class="card tree-card position-relative text-white overflow-hidden h-100 shadow-sm">
@@ -90,15 +88,15 @@ function getTreeCard(tree, imgPrefix, withEdit){
                 
                 <!-- User Bereich -->
                 <div class="d-flex align-items-center mb-3">
-                    <a href="${imgPrefix}data/user.html?id=${tree.owner.id}" class="d-flex align-items-center text-white text-decoration-none">
-                        <img src="${imgPrefix}${getImagePathFromUser(tree.owner)}" 
+                    <a href="${imgPrefix}data/user.html?id=${tree.owner.id}" class="d-flex align-items-center text-white text-decoration-none user-link">
+                        <img src="${getImagePathFromUser(tree.owner, imgPrefix)}" 
                              class="rounded-circle me-2" 
                              width="40" height="40" 
                              alt="Profile">
                         <strong>${tree.owner.name}</strong>
                     </a>
                 </div>
-                <a href="${imgPrefix}data/tree.html?id=${tree.id}" target="_blank" class="text-reset text-decoration-none">
+                <a href="${imgPrefix}data/tree.html?id=${tree.id}" target="_blank" class="text-reset text-decoration-none tree-link">
                 <!-- Titel -->
                 <h5 class="card-title">${tree.title}</h5>
                 
@@ -109,13 +107,13 @@ function getTreeCard(tree, imgPrefix, withEdit){
                 <!-- Icons: Likes, Comments, Clicks -->
                 <div class="d-flex gap-3 mt-3">
                     <span class="d-flex align-items-center">
-                        <i class="bi bi-heart-fill me-1"></i> ${tree.likes.count}
+                        <i class="bi bi-heart-fill me-1"></i> ${tree.analytics.likes.count}
+                    </span>
+                    <span class="d-flex align-items-center ${tree.analytics.likes.liked ? "active" : ""}">
+                        <i class="bi bi-chat-left-text-fill me-1"></i> ${tree.analytics.comments}
                     </span>
                     <span class="d-flex align-items-center">
-                        <i class="bi bi-chat-left-text-fill me-1"></i> ${tree.comments}
-                    </span>
-                    <span class="d-flex align-items-center">
-                        <i class="bi bi-hand-index me-1"></i> ${tree.clicks}
+                        <i class="bi bi-hand-index me-1"></i> ${tree.analytics.clicks}
                     </span>
                 </div>
 
@@ -123,15 +121,15 @@ function getTreeCard(tree, imgPrefix, withEdit){
                 
                 <!-- Klickbare Tree-Seite -->
                 <div class="mt-3">
-                    ${withEdit ? 
+                    ${tree.permissions.canEdit ? 
                         `<a href="${imgPrefix}data/editTree.html?id=${tree.id}" target="_blank" class="btn btn-primary btn-sm">
                             <i class="bi bi-pencil-fill"></i>
-                        </a>
-                        <a href="${imgPrefix}data/deleteTree.html?id=${tree.id}" target="_blank" class="btn btn-danger btn-sm">
+                        </a> ` : ""}
+                    ${tree.permissions.canDelete ? 
+                        `<a href="${imgPrefix}data/deleteTree.html?id=${tree.id}" target="_blank" class="btn btn-danger btn-sm">
                             <i class="bi bi-trash-fill"></i>
                         </a>
                         ` 
-                        
                         : ""}
                 </div>
                 
@@ -141,4 +139,8 @@ function getTreeCard(tree, imgPrefix, withEdit){
     `;
 
     return cardHtml;
+}
+
+function nothingBox() {
+    return `<p>Nothing to show here.<p/>`
 }

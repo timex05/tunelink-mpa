@@ -1,85 +1,8 @@
-
-let profileImg = {
-    url: "",
-    default: ""
-}
-
-function selectAvatar($label) {
-    $('.avatar-label input[type="radio"]').prop('checked', false);
-    const $radio = $label.find('input[type="radio"]');
-    $radio.prop('checked', true)
-
-
-    const avatar = $radio.prop('checked', true).val();
-
-    if(avatar == 'male'){
-        profileImg.url = undefined;
-        profileImg.default = 'male';
-    } else if(avatar == 'female'){
-        profileImg.url = undefined;
-        profileImg.default = 'female';
-    } else {
-        profileImg.url = avatar;
-    }
-}
-
-function addCustomAvatar(url) {
-    if (!url) {
-        alert('Please enter a valid URL');
-        return;
-    }
-
-    const escapedUrl = url.replace(/"/g, '&quot;');
-
-    const $html = $(`
-        <label class="text-center cursor-pointer avatar-label">
-            <input type="radio" name="avatar" value="${escapedUrl}" class="d-none" required>
-            <div class="avatar-container">
-                <img src="${escapedUrl}" class="avatar-img">
-            </div>
-        </label>
-    `);
-
-    // Fehlerbild entfernen
-    $html.find('img').on('error', function () {
-        $(this).closest('.avatar-label').remove();
-    });
-
-    $("#customAvatarBox").append($html);
-    $("#customAvatarUrl").val("");
-}
-
-// DiceBear Avatare laden
-function loadDiceBearAvatars() {
-    const $box = $("#diceBearAvatarBox");
-    $box.empty();
-
-    for (let i = 0; i < 20; i++) {
-        const seed = Math.floor(100000 + Math.random() * 900000);
-        const url = `https://api.dicebear.com/9.x/avataaars/svg?seed=${seed}`;
-
-        const $html = $(`
-            <label class="text-center cursor-pointer avatar-label">
-                <input type="radio" name="avatar" value="${url}" class="d-none" required>
-                <div class="avatar-container">
-                    <img src="${url}" class="avatar-img">
-                </div>
-            </label>
-        `);
-
-        $box.append($html);
-    }
-}
-
-
+let user = {};
 
 $(function () {
     //verifyToken("profile.html", true);
-    loadDiceBearAvatars();
 
-    $(document).on("click", ".avatar-img", function () {
-        selectAvatar($(this).closest('.avatar-label'));
-    });
 
     $.ajax({
         url: backendDomain + `/api/user/me?${getTokenForUrl()}`,
@@ -87,33 +10,13 @@ $(function () {
         dataType: 'json',
         contentType: 'application/json; charset=UTF-8',
         success: function (data) {
+            console.log(data);
             $("#username").val(data.user.name);
             $("#email").val(data.user.email);
             $("#description").val(data.user.description);
-            $("#newsletter").val(data.user.newsletter);
-            profileImg = data.user.profileImg;
-
-            if(data.user.profileImg.url){
-                const html = `
-                    <h6 class="text-secondary mb-3">Current Avatar</h6>
-                    <div class="d-flex flex-wrap gap-4">
-                        <label id="current" class="text-center cursor-pointer avatar-label">
-                            <input type="radio" name="avatar" value="${data.user.profileImg.url}" class="d-none" required>
-                            <div class="avatar-container">
-                                <img src="${data.user.profileImg.url}"
-                                     class="avatar-img">
-                            </div>
-                        </label>
-                    </div>            
-                `;
-                $("#currentAvatar").html(html);
-                selectAvatar($("#current"));
-            } else if(data.user.profileImg.default == 'male'){
-
-                selectAvatar($("#default-male"));
-            } else if(data.user.profileImg.default == 'female'){
-                selectAvatar($("#default-female"));
-            }
+            $("#newsletter").prop('checked', data.user.isNewsLetter);
+            $("#profilePicturePreview").prop('src', getImagePathFromUser(data.user, "../"));
+            user = data.user;
         },
         error: function (xhr, ajaxOptions, thrownError) {
             alert('Error: ' + xhr.status + '  ' + thrownError);
@@ -126,7 +29,20 @@ $(function () {
         const password = $('#password').val();
         const username = $("#username").val();
         const description = $("#description").val();
-        const newsletter = $("#newsletter").val();
+        const isNewsLetter = $("#newsletter").val();
+
+        if(!email && email != ""){
+            user.email = email;
+        }
+        if(!password && password != ""){
+            user.password = password;
+        }
+        if(!username && username != ""){
+            user.name = username;
+        }
+        if(!description && description != ""){
+            user.description = description;
+        }
 
         $.ajax({
             url: backendDomain + '/api/user/me',
@@ -136,12 +52,11 @@ $(function () {
             data: JSON.stringify({ 
                 token: getTokenString(),
                 user: {
-                    name: username,
-                    email: email,
-                    password: password,
-                    profileImg: profileImg,
-                    newsletter: newsletter,
-                    description: description
+                    name: user.name,
+                    email: user.email,
+                    password: user.password,
+                    isNewsLetter: isNewsLetter,
+                    description: user.description
                 }
             }),
             success: function (data) {

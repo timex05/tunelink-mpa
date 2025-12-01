@@ -16,7 +16,7 @@
     inset: 0;
     background-size: cover;
     background-position: center;
-    filter: blur(14px) brightness(0.55);
+    filter: blur(4px) brightness(0.8);
     transform: scale(1.2);
     z-index: 1;
 }
@@ -26,6 +26,28 @@
     z-index: 2;
 }
 
-.tree-card:hover {
-    transform: translateY(-5px);
+/* Hover für User-Bereich */
+.user-link {
+    border-radius: 8px;
+    padding: 4px 6px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.user-link:hover {
+    background-color: rgba(255,255,255,0.15);
+    box-shadow: 0 0 8px rgba(255,255,255,0.35);
+}
+
+
+/* Hover für Tree-Inhalt (Titel + Beschreibung + Stats) */
+.tree-link {
+    display: block;
+    border-radius: 10px;
+    padding: 2px 4px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tree-link:hover {
+    background-color: rgba(0, 123, 255, 0.18);
+    box-shadow: 0 0 10px rgba(0,123,255,0.35);
 }

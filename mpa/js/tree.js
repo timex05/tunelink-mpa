@@ -22,17 +22,17 @@ $(function () {
             $("#tree-title").text(tree.title);
             $("#tree-subtitle").text(tree.interpret);
             $("#tree-description").text(tree.description);
-            $("#tree-like").html(tree.likes.count + ' <i class="bi bi-heart"></i>');
-            if(tree.likes.liked){
+            $("#tree-like").html(tree.analytics.likes.count + ' <i class="bi bi-heart"></i>');
+            if(tree.analytics.likes.liked){
                 $("#tree-like").addClass('active');
                 liked = true;
             } else {
                 liked = false;
             }
-            $("#tree-comment").html(tree.comments + ' <i class="bi bi-chat"></i>');
+            $("#tree-comment").html(tree.analytics.comments + ' <i class="bi bi-chat"></i>');
             $("#tree-owner-link").attr('href', `../data/user.html?id=${owner.id}`);
 
-            $("#tree-owner-img").attr('src', `../${getImagePathFromUser(owner)}`);
+            $("#tree-owner-img").attr('src', `${getImagePathFromUser(owner, "../")}`);
             $("#tree-owner").text(owner.name);
 
             if(!urls.spotify || urls.spotify == ""){
@@ -89,7 +89,7 @@ $(function () {
             const box = $("#comment-box")
             console.log(data);
             data.commentlist.forEach(comment => {
-                if(comment.owner.isOwner){
+                if(comment.permissions.canDelete){
                     const $html = $(`
                         <div class="card mb-2">
                             <div class="card-body py-2">
@@ -97,7 +97,7 @@ $(function () {
                                     <div class="d-flex align-items-start">
                                          <a href="user.html?id=${comment.owner.id}">
                                             <div class="rounded-circle overflow-hidden me-2 mr-2" style="width:40px; height:40px;">
-                                                <img src="../${getImagePathFromUser(comment.owner)}" alt="User" class="img-fluid" style="width:100%; height:100%; object-fit:cover;">
+                                                <img src="${getImagePathFromUser(comment.owner, "../")}" alt="User" class="img-fluid" style="width:100%; height:100%; object-fit:cover;">
                                             </div>
                                          </a>
                                         <div>
@@ -124,7 +124,7 @@ $(function () {
                                     <div class="d-flex align-items-start">
                                          <a href="user.html?id=${comment.owner.id}">
                                             <div class="rounded-circle overflow-hidden me-2 mr-2" style="width:40px; height:40px;">
-                                                <img src="../${getImagePathFromUser(comment.owner)}" alt="User" class="img-fluid" style="width:100%; height:100%; object-fit:cover;">
+                                                <img src="${getImagePathFromUser(comment.owner, "../")}" alt="User" class="img-fluid" style="width:100%; height:100%; object-fit:cover;">
                                             </div>
                                          </a>
                                         <div>

@@ -13,7 +13,7 @@ $(function () {
         contentType: 'application/json; charset=UTF-8',
         success: function (data) {
             console.log(data);
-            $('#user-img').attr('src', `../${getImagePathFromUser(data.user)}`);
+            $('#user-img').attr('src', `${getImagePathFromUser(data.user, "../")}`);
             $('#user-name').text(data.user.name);
             $('#user-description').text(data.user.description);
         },
