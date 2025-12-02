@@ -4,8 +4,8 @@ $(function () {
         const email = $('#email').val();
         const password = $('#password').val();
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const redirect = urlParams.get("r");
+
+        const redirect = getUrlParam("r");
 
         $.ajax({
             url: backendDomain + '/api/user/auth',
@@ -23,3 +23,22 @@ $(function () {
         });
     });
 });
+
+function onGoogleLogin(response) {
+    const idToken = response.credential;
+    const redirect = getUrlParam("r");
+    $.ajax({
+        url: backendDomain + '/api/user/auth/google',
+        type: 'post',
+        dataType: 'json',
+        contentType: 'application/json; charset=UTF-8',
+        data: JSON.stringify({ googleToken: idToken }),
+        success: function (data) {
+            setToken(data.token);
+            window.location.href = frontendDomain + "/" + (redirect ? redirect : 'homepage.html');
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert('Error: ' + xhr.status + '  ' + thrownError);
+        }
+    });
+}

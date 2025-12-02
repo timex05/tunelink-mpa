@@ -11,6 +11,8 @@
     <script src="../js/jquery-3.7.1.min.js"></script>
     <script src="../js/general.js"></script>
     <script src="../js/login.js"></script>
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
     <header>
@@ -61,9 +63,7 @@
                                 <div class="text-center mb-3">
                                     <span class="text-muted">or</span>
                                 </div>
-                                <button type="button" class="btn btn-outline-dark w-100 mb-3">
-                                    <i class="bi bi-google"></i> Google OAuth
-                                </button>
+                                <div class="g_id_signin" data-type="standard"></div>
                                 <hr>
                                 <p class="text-center">Don't have an account? <a href="register.html">Sign up</a></p>
                             </form>
@@ -73,6 +73,16 @@
             </div>
         </div>
     </main>
+
+    
+
+<div id="g_id_onload"
+     data-client_id="297888719014-rav4ooblecl20gvid0h7n9n20i2t41gu.apps.googleusercontent.com"
+     data-context="signin"
+     data-callback="onGoogleLogin">
+</div>
+
+
 
     <footer class="bg-dark text-white py-4 mt-5">
         <div class="container-fluid">
