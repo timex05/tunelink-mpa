@@ -21,3 +21,21 @@ $(function () {
         });
     });
 });
+
+function onGoogleLogin(response) {
+    const idToken = response.credential;
+    $.ajax({
+        url: backendDomain + '/api/user/auth/google',
+        type: 'post',
+        dataType: 'json',
+        contentType: 'application/json; charset=UTF-8',
+        data: JSON.stringify({ googleToken: idToken }),
+        success: function (data) {
+            setToken(data.token);
+            window.location.href = frontendDomain + "/" + 'homepage.html';
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert('Error: ' + xhr.status + '  ' + thrownError);
+        }
+    });
+}
