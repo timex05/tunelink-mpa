@@ -1,7 +1,7 @@
 $(function () {
 
     const email = getUrlParam('email');
-    const token = getUrlParam(token);
+    const token = getUrlParam('token');
     if(!token || !email){
         window.location.href = frontendDomain + "/hompage.html";
         return;
@@ -17,7 +17,7 @@ $(function () {
         
 
         $.ajax({
-            url: `${backendDomain}/api/user/auth/forgot`,
+            url: `${backendDomain}/api/user/auth/reset`,
             type: 'post',
             dataType: 'json',
             contentType: 'application/json; charset=UTF-8',

@@ -56,7 +56,16 @@
                                     <input type="email" class="form-control" id="email" maxlength="40" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="password" class="form-label">Password</label>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <label for="password" class="form-label mb-0">Password</label>
+                                        <a href="forgot.html"
+                                           class="text-decoration-none"
+                                           data-bs-toggle="tooltip"
+                                           data-bs-placement="top"
+                                           title="Forgot password">
+                                            <i class="bi bi-question-circle"></i>
+                                        </a>
+                                    </div>
                                     <input type="password" class="form-control" id="password" required>
                                 </div>
                                 <button type="submit" class="btn btn-primary w-100 mb-3">Log in</button>
