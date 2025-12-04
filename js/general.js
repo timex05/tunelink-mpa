@@ -1,5 +1,5 @@
 const backendDomain = "http://localhost:3000";
-const frontendDomain = "http://127.0.0.1:5500/mpa"
+const frontendDomain = "http://127.0.0.1:5500"
 
 const urlParams = new URLSearchParams(window.location.search);
 
