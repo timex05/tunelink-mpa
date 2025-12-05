@@ -39,4 +39,41 @@ $(function () {
             }
         });
     });
+
+    $('#spotifysonginfo').on('click', function () {
+
+        const spotifyUrl = prompt("Enter Spotify Url: ");
+        const trackId = extractSpotifyId(spotifyUrl);
+
+        if(!trackId){
+            alert('Invalid Spotify Url.')
+            return;
+        }
+
+
+        $.ajax({
+            url: backendDomain + `/api/spotify/trackinfo?trackId=${trackId}&${getTokenForUrl()}`,
+            type: 'get',
+            dataType: 'json',
+            contentType: 'application/json; charset=UTF-8',
+            success: function (data) {
+                $('#treeTitle').val(data.trackInfo.title);
+                $('#interpret').val(data.trackInfo.interpret);
+                $('#album').val(data.trackInfo.album);
+                $('#cover').val(data.trackInfo.imageUrl);
+                $('#releaseDate').val(data.trackInfo.releaseDate);
+                $('#spotify').val(spotifyUrl);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert('Error: ' + xhr.status + '  ' + thrownError);
+
+            }
+        });
+    });
 });
+
+function extractSpotifyId(urlString) {
+  const url = new URL(urlString);             
+  const parts = url.pathname.split("/");
+  return parts[parts.length - 1];
+}

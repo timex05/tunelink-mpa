@@ -52,8 +52,11 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="card">
-                        <div class="card-header bg-dark text-white">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
                             <h3 class="card-title mb-0">Create a New Linktree</h3>
+                            <a id="spotifysonginfo" class="btn btn-success btn-sm d-flex align-items-center justify-content-center" aria-label=fFetch track info from spotify" title="fetch track info from spotify">
+                                <i class="bi bi-spotify"></i>
+                            </a>
                         </div>
                         <div class="card-body">
                             <form id="createtree">
@@ -168,5 +171,26 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var btn = document.getElementById('openSpotify');
+            var input = document.getElementById('spotify');
+            if (!btn || !input) return;
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                var url = input.value.trim();
+                if (!url) {
+                    alert('Bitte geben Sie zuerst eine Spotify-URL ein.');
+                    input.focus();
+                    return;
+                }
+                // ensure scheme
+                if (!/^https?:\/\//i.test(url)) {
+                    url = 'https://' + url;
+                }
+                window.open(url, '_blank', 'noopener');
+            });
+        });
+    </script>
 </body>
 </html>
