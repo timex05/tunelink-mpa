@@ -28,7 +28,7 @@ $(function () {
         updateData();
     });
 
-    $("#searchinput").on('change', function () {
+    $("#searchinput").on('input', function () {
         const selectedValue = $(this).val();
         query = selectedValue;
         updateData();

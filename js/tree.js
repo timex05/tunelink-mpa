@@ -35,41 +35,33 @@ $(function () {
             $("#tree-owner-img").attr('src', `${getImagePathFromUser(owner, "../")}`);
             $("#tree-owner").text(owner.name);
 
-            if(!urls.spotify || urls.spotify == ""){
-                $("#spotify").hide();
-            } else {
-                $("#spotify").attr('href', urls.spotify);
+            if(urls.spotify && urls.spotify != ""){
+                $('#linkbox').append(getUrlDiv('spotify-banner.png', urls.spotify));
+            } 
+
+            if(urls.youtube && urls.youtube != ""){
+                $('#linkbox').append(getUrlDiv('youtube-banner.png', urls.youtube));
+            } 
+
+            if(urls.applemusic && urls.applemusic != ""){
+                $('#linkbox').append(getUrlDiv('applemusic-banner.png', urls.applemusic));
+
+            } 
+
+            if(urls.amazonmusic && urls.amazonmusic != ""){
+                $('#linkbox').append(getUrlDiv('amazonmusic-banner.png', urls.amazonmusic));
+
+            } 
+
+            if(urls.soundcloud && urls.soundcloud != ""){
+                $('#linkbox').append(getUrlDiv('soundcloud.banner.svg', urls.soundcloud));
+
             }
 
-            if(!urls.youtube || urls.youtube == ""){
-                $("#youtube").hide();
-            } else {
-                $("#youtube").attr('href', urls.youtube);
-            }
+            if(urls.youtubemusic && urls.youtubemusic != ""){
+                $('#linkbox').append(getUrlDiv('ytmusic-banner.svg', urls.youtubemusic));
 
-            if(!urls.applemusic || urls.applemusic == ""){
-                $("#applemusic").hide();
-            } else {
-                $("#applemusic").attr('href', urls.applemusic);
-            }
-
-            if(!urls.amazonmusic || urls.amazonmusic == ""){
-                $("#amazonmusic").hide();
-            } else {
-                $("#amazonmusic").attr('href', urls.amazonmusic);
-            }
-
-            if(!urls.soundcloud || urls.soundcloud == ""){
-                $("#soundcloud").hide();
-            } else {
-                $("#soundcloud").attr('href', urls.soundcloud);
-            }
-
-            if(!urls.youtubemusic || urls.youtubemusic == ""){
-                $("#youtubemusic").hide();
-            } else {
-                $("#youtubemusic").attr('href', urls.youtubemusic);
-            }
+            } 
             
             
 
@@ -215,4 +207,15 @@ function deleteComment(id){
             alert('Error: ' + xhr.status + '  ' + thrownError);
         }
     });
+}
+
+function getUrlDiv(banner, url){
+  return `<div class="list-group-item d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+      <img src="../images/platform/${banner}" alt="" class="me-2" style="height:40px;">
+    </div>
+    <a href="${url}" class="btn btn-primary btn-md ps-5 pe-5" target="_blank">
+      <i class="bi bi-play"></i> Play
+    </a>
+  </div>`;
 }
