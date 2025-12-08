@@ -1,5 +1,6 @@
 $(function () {
-    $('#createtree').on('submit', function () {
+    $('#createtree').on('submit', function (e) {
+        e.preventDefault();
         const tree = {
             title: $('#treeTitle').val(),
             interpret: $('#interpret').val(),
@@ -7,7 +8,7 @@ $(function () {
             description: $('#description').val(),
             cover: $('#cover').val(),
             isPublic: $('#public').prop('checked'),
-            releaseDate: $('#releaseDate').val(),
+            releaseDate: $('#releaseDate').val() + ":00",
             urls: {
                 spotify: $('#spotify').val(),
                 youtube: $('#youtube').val(),
@@ -20,7 +21,7 @@ $(function () {
 
         }
         $.ajax({
-            url: backendDomain + `/api/tree/${treeId}`,
+            url: backendDomain + `/api/tree/`,
             type: 'post',
             dataType: 'json',
             contentType: 'application/json; charset=UTF-8',

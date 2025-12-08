@@ -1,5 +1,5 @@
 $(function() {
-    verifyToken("profile.html", true);
+    verifyToken("profile/profile.html", true);
     $.ajax({
         url: backendDomain + `/api/user/me?${getTokenForUrl()}`,
         type: 'get',

@@ -1,7 +1,7 @@
 $(function () {
     const treeId = getUrlParam("id");
     if(!treeId || treeId == ""){
-        window.location.href = "../homepage.html";
+        window.location.href = "../index.html";
     }
     verifyToken(`data/editTree.html?id=${treeId}`, true);
     $.ajax({
@@ -31,7 +31,7 @@ $(function () {
         },
         error: function (xhr, ajaxOptions, thrownError) {
             alert('Error: ' + xhr.status + '  ' + thrownError);
-            window.location.href = "../homepage.html";
+            window.location.href = "../index.html";
         }
     });
 

@@ -1,21 +1,19 @@
 $(function () {
-    $('#loginform').on('submit', function (e) {
+    $('#registerform').on('submit', function (e) {
         e.preventDefault();
+        const name = $('#username').val();
         const email = $('#email').val();
         const password = $('#password').val();
 
-
-        const redirect = getUrlParam("r");
-
         $.ajax({
-            url: backendDomain + '/api/user/auth',
+            url: backendDomain + '/api/user',
             type: 'post',
             dataType: 'json',
             contentType: 'application/json; charset=UTF-8',
-            data: JSON.stringify({ credentials: { email: email, password: password } }),
+            data: JSON.stringify({ user: { name: name, email: email, password: password } }),
             success: function (data) {
-                setToken(data.token);
-                window.location.href = frontendDomain + "/" + (redirect ? redirect : 'homepage.html');
+                alert(data.message);
+                window.location.href = frontendDomain + '/auth/login.html';
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert('Error: ' + xhr.status + '  ' + thrownError);
@@ -26,7 +24,6 @@ $(function () {
 
 function onGoogleLogin(response) {
     const idToken = response.credential;
-    const redirect = getUrlParam("r");
     $.ajax({
         url: backendDomain + '/api/user/auth/google',
         type: 'post',
@@ -35,7 +32,7 @@ function onGoogleLogin(response) {
         data: JSON.stringify({ googleToken: idToken }),
         success: function (data) {
             setToken(data.token);
-            window.location.href = frontendDomain + "/" + (redirect ? redirect : 'homepage.html');
+            window.location.href = frontendDomain + "/" + 'index.html';
         },
         error: function (xhr, ajaxOptions, thrownError) {
             alert('Error: ' + xhr.status + '  ' + thrownError);

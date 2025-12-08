@@ -2,12 +2,12 @@ $(function () {
     const urlParams = new URLSearchParams(window.location.search);
     const userId = urlParams.get("id");
     if(!userId || userId == '') {
-        window.location.href = frontendDomain + '/homepage.html';
+        window.location.href = frontendDomain + '/index.html';
         return;
     }
 
     $.ajax({
-        url: backendDomain + `/api/user/${userId}`,
+        url: backendDomain + `/api/user/${userId}?${getTokenForUrl()}`,
         type: 'get',
         dataType: 'json',
         contentType: 'application/json; charset=UTF-8',
@@ -23,7 +23,7 @@ $(function () {
     });
 
     $.ajax({
-        url: backendDomain + `/api/user/${userId}/tree`,
+        url: backendDomain + `/api/user/${userId}/tree?${getTokenForUrl()}`,
         type: 'get',
         dataType: 'json',
         contentType: 'application/json; charset=UTF-8',

@@ -1,5 +1,5 @@
 const backendDomain = "http://localhost:3000";
-const frontendDomain = "http://127.0.0.1:5500"
+const frontendDomain = "http://127.0.0.1:5500/public"
 
 const urlParams = new URLSearchParams(window.location.search);
 
@@ -17,6 +17,7 @@ function verifyToken(redirect, newAuthentication){
         }
         return false;
     }
+    return true;
 }
 
 function isTokenValid(){
@@ -55,7 +56,7 @@ function getToken(){
 }
 
 function getImagePathFromUser(user, imgPrefix){
-    let imgUrl = user.profileImg.url;
+    let imgUrl = user.profileImg?.url;
     if(!imgUrl || imgUrl == ''){
         imgUrl = `${imgPrefix}images/profile-dummy/${user.profileImg.default}_round.png`;
     }
