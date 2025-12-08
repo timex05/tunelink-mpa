@@ -11,7 +11,7 @@ $(function () {
             success: function (data) {
                 removeToken();
                 alert(data.message);
-                window.location.href = frontendDomain + '/';
+                window.location.href = frontendDomain;
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert('Error: ' + xhr.status + '  ' + thrownError);

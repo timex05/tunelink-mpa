@@ -15,7 +15,7 @@ $(function () {
             data: JSON.stringify({ credentials: { email: email, password: password } }),
             success: function (data) {
                 setToken(data.token);
-                window.location.href = frontendDomain + "/" + (redirect ? redirect : '');
+                window.location.href = frontendDomain + (redirect ? "/" + redirect : '');
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert('Error: ' + xhr.status + '  ' + thrownError);

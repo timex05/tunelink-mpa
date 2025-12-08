@@ -4,7 +4,7 @@ $(function () {
     const urlParams = new URLSearchParams(window.location.search);
     treeId = urlParams.get("id");
     if(!treeId || treeId == '') {
-        window.location.href = frontendDomain + '/';
+        window.location.href = frontendDomain;
         return;
     }
 
