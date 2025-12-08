@@ -120,7 +120,7 @@ $(function () {
         }
     });
 
-    $('#editform').on('submit', function (e) {
+    $('#avatarform').on('submit', function (e) {
         e.preventDefault();
 
         $.ajax({
