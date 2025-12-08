@@ -48,6 +48,6 @@
 }
 
 .tree-link:hover {
-    background-color: rgba(0, 123, 255, 0.18);
-    box-shadow: 0 0 10px rgba(0,123,255,0.35);
+    background-color: rgba(255,255,255,0.15);
+    box-shadow: 0 0 8px rgba(255,255,255,0.35);
 }
