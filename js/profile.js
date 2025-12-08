@@ -10,6 +10,10 @@ $(function() {
             $('#user-image').attr('src', `${getImagePathFromUser(data.user, "../")}`);
             $('#user-name').text(data.user.name);
             $('#user-description').text(data.user.description);
+            $('#profilearea').removeClass('d-none');
+            $('#profilearea').addClass('d-flex');
+            $('#profilearea-skeleton').removeClass('d-flex');
+            $('#profilearea-skeleton').addClass('d-none');
         },
         error: function (xhr, ajaxOptions, thrownError) {
             alert('Error: ' + xhr.status + '  ' + thrownError);
@@ -24,6 +28,7 @@ $(function() {
         success: function (data) {
             console.log(data);
             const $container = $('#my-tree-box');
+            $container.empty();
             if(data.treelist.length == 0){
                 $container.append(nothingBox());
             }
@@ -45,6 +50,7 @@ $(function() {
         success: function (data) {
             console.log(data);
             const $container = $('#like-box');
+            $container.empty();
             if(data.treelist.length == 0){
                 $container.append(nothingBox());
             }
@@ -65,6 +71,7 @@ $(function() {
         success: function (data) {
             console.log(data);
             const $container = $('#comment-box');
+            $container.empty();
             if(data.treelist.length == 0){
                 $container.append(nothingBox());
             }

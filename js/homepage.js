@@ -58,6 +58,12 @@ $(function () {
 
 
 function updateData() {
+    const $container = $('#treebox');
+    $container.empty();
+    for(let i = 0; i < 6; i++){
+        $container.append(getTreeCardSkeleton());
+    }
+
     $.ajax({
         url: backendDomain + `/api/front?q=${query}&categories=${filters.toString()}&sort=${sort}&dir=DESC&${getTokenForUrl()}`,
         type: 'get',

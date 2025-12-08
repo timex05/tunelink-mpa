@@ -53,9 +53,10 @@
 
         <div class="bg-light py-4 border-bottom">
           <div class="container">
-            <div class="d-flex align-items-center gap-3">
+
+            <div id="profilearea" class="d-none align-items-center gap-3">
               <div class="flex-shrink-0 mr-3">
-                <img id="user-img"
+                <img id="user-image"
                   src="../images/profile-dummy/female_round.png" 
                   alt="Username" 
                   class="rounded-circle" 
@@ -66,8 +67,22 @@
                 <h1 id="user-name" class="mb-1 fs-3">Username</h1>
                 <p id="user-description" class="text-muted mb-0">User Profile</p>
               </div>
-          
             </div>
+            
+            <div id="profilearea-skeleton" class="d-flex align-items-center gap-3 placeholder-wave">
+              <div class="flex-shrink-0 mr-3">
+                <span class="placeholder rounded-circle" style="width:64px; height:64px;"></span>
+              </div>
+              <div class="w-100">
+                <h1 class="mb-1 fs-3">
+                  <span class="placeholder col-6"></span>
+                </h1>
+                <p class="text-muted mb-0">
+                  <span class="placeholder col-4"></span>
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -79,66 +94,99 @@
                 <div class="col-12">
                     <h3 class="mb-4">Linktrees</h3>
                     <div id="treebox" class="row g-4">
-                        <!-- <div class="col-12 col-md-6 col-lg-4">
-                            <a href="tree.html?id=tree1" target="_blank" class="text-decoration-none">
-                                <div class="card h-100 shadow-sm">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Tree 1</h5>
-                                        <p class="card-text text-muted small">Click to view</p>
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card tree-card position-relative overflow-hidden h-100 shadow-sm">  
+                                <div class="card-body position-relative placeholder-wave">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="rounded-circle placeholder me-2" style="width:40px; height:40px;"></span>
+                                        <span class="placeholder col-5"></span>
+                                    </div>
+                                    <h5 class="card-title">
+                                        <span class="placeholder col-7"></span>
+                                    </h5>
+                                    <p class="mb-1">
+                                        <span class="placeholder col-4"></span>
+                                    </p>
+                                    <p>
+                                        <span class="placeholder col-10"></span>
+                                        <span class="placeholder col-8"></span>
+                                    </p>
+                                    <div class="d-flex gap-3 mt-3">
+                                        <span class="d-flex align-items-center">
+                                            <span class="placeholder col-2"></span>
+                                        </span>
+                                        <span class="d-flex align-items-center">
+                                            <span class="placeholder col-2"></span>
+                                        </span>
+                                        <span class="d-flex align-items-center">
+                                            <span class="placeholder col-2"></span>
+                                        </span>
                                     </div>
                                 </div>
-                            </a>
+                            </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4">
-                            <a href="tree.html?id=tree2" target="_blank" class="text-decoration-none">
-                                <div class="card h-100 shadow-sm">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Tree 2</h5>
-                                        <p class="card-text text-muted small">Click to view</p>
+                            <div class="card tree-card position-relative overflow-hidden h-100 shadow-sm">  
+                                <div class="card-body position-relative placeholder-wave">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="rounded-circle placeholder me-2" style="width:40px; height:40px;"></span>
+                                        <span class="placeholder col-5"></span>
+                                    </div>
+                                    <h5 class="card-title">
+                                        <span class="placeholder col-7"></span>
+                                    </h5>
+                                    <p class="mb-1">
+                                        <span class="placeholder col-4"></span>
+                                    </p>
+                                    <p>
+                                        <span class="placeholder col-10"></span>
+                                        <span class="placeholder col-8"></span>
+                                    </p>
+                                    <div class="d-flex gap-3 mt-3">
+                                        <span class="d-flex align-items-center">
+                                            <span class="placeholder col-2"></span>
+                                        </span>
+                                        <span class="d-flex align-items-center">
+                                            <span class="placeholder col-2"></span>
+                                        </span>
+                                        <span class="d-flex align-items-center">
+                                            <span class="placeholder col-2"></span>
+                                        </span>
                                     </div>
                                 </div>
-                            </a>
+                            </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4">
-                            <a href="tree.html?id=tree3" target="_blank" class="text-decoration-none">
-                                <div class="card h-100 shadow-sm">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Tree 3</h5>
-                                        <p class="card-text text-muted small">Click to view</p>
+                            <div class="card tree-card position-relative overflow-hidden h-100 shadow-sm">  
+                                <div class="card-body position-relative placeholder-wave">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="rounded-circle placeholder me-2" style="width:40px; height:40px;"></span>
+                                        <span class="placeholder col-5"></span>
+                                    </div>
+                                    <h5 class="card-title">
+                                        <span class="placeholder col-7"></span>
+                                    </h5>
+                                    <p class="mb-1">
+                                        <span class="placeholder col-4"></span>
+                                    </p>
+                                    <p>
+                                        <span class="placeholder col-10"></span>
+                                        <span class="placeholder col-8"></span>
+                                    </p>
+                                    <div class="d-flex gap-3 mt-3">
+                                        <span class="d-flex align-items-center">
+                                            <span class="placeholder col-2"></span>
+                                        </span>
+                                        <span class="d-flex align-items-center">
+                                            <span class="placeholder col-2"></span>
+                                        </span>
+                                        <span class="d-flex align-items-center">
+                                            <span class="placeholder col-2"></span>
+                                        </span>
                                     </div>
                                 </div>
-                            </a>
+                            </div>
                         </div>
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <a href="tree.html?id=tree4" target="_blank" class="text-decoration-none">
-                                <div class="card h-100 shadow-sm">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Tree 4</h5>
-                                        <p class="card-text text-muted small">Click to view</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <a href="tree.html?id=tree5" target="_blank" class="text-decoration-none">
-                                <div class="card h-100 shadow-sm">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Tree 5</h5>
-                                        <p class="card-text text-muted small">Click to view</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <a href="tree.html?id=tree6" target="_blank" class="text-decoration-none">
-                                <div class="card h-100 shadow-sm">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Tree 6</h5>
-                                        <p class="card-text text-muted small">Click to view</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div> -->
                     </div>
                 </div>
             </div>

@@ -16,6 +16,11 @@ $(function () {
             $('#user-img').attr('src', `${getImagePathFromUser(data.user, "../")}`);
             $('#user-name').text(data.user.name);
             $('#user-description').text(data.user.description);
+
+            $('#profilearea').removeClass('d-none');
+            $('#profilearea').addClass('d-flex');
+            $('#profilearea-skeleton').removeClass('d-flex');
+            $('#profilearea-skeleton').addClass('d-none');
         },
         error: function (xhr, ajaxOptions, thrownError) {
             alert('Error: ' + xhr.status + '  ' + thrownError);
@@ -29,6 +34,7 @@ $(function () {
         contentType: 'application/json; charset=UTF-8',
         success: function (data) {
             const $box = $("#treebox");
+            $box.empty();
 
             console.log(data);
             data.treelist.forEach(tree => {

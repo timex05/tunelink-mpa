@@ -81,6 +81,42 @@ $(function () {
     }
 });
 
+function getTreeCardSkeleton(){
+    return `
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card tree-card position-relative overflow-hidden h-100 shadow-sm">  
+                <div class="card-body position-relative placeholder-wave">
+                    <div class="d-flex align-items-center mb-3">
+                        <span class="rounded-circle placeholder me-2" style="width:40px; height:40px;"></span>
+                        <span class="placeholder col-5"></span>
+                    </div>
+                    <h5 class="card-title">
+                        <span class="placeholder col-7"></span>
+                    </h5>
+                    <p class="mb-1">
+                        <span class="placeholder col-4"></span>
+                    </p>
+                    <p>
+                        <span class="placeholder col-10"></span>
+                        <span class="placeholder col-8"></span>
+                    </p>
+                    <div class="d-flex gap-3 mt-3">
+                        <span class="d-flex align-items-center">
+                            <span class="placeholder col-2"></span>
+                        </span>
+                        <span class="d-flex align-items-center">
+                            <span class="placeholder col-2"></span>
+                        </span>
+                        <span class="d-flex align-items-center">
+                            <span class="placeholder col-2"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
 
 function getTreeCard(tree, imgPrefix){
     console.log(tree);
