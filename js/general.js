@@ -153,3 +153,17 @@ function getTreeCard(tree, imgPrefix){
 function nothingBox() {
     return `<p>Nothing to show here.<p/>`
 }
+
+
+function formatDate(timestamp) {
+    // 1. In JS-Datei konvertieren
+    const date = new Date(timestamp); // erzeugt Date-Objekt in lokaler Zeit
+
+    // 2. Für datetime-local formatieren
+    const pad = (n) => n.toString().padStart(2, "0");
+
+    const localDatetime = `${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
+    console.log(localDatetime); // "2025-12-08T10:45"
+
+    return localDatetime;
+}

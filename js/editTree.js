@@ -20,7 +20,7 @@ $(function () {
             $('#description').val(tree.description);
             $('#cover').val(tree.cover);
             $('#public').prop('checked', tree.isPublic);
-            $('#releaseDate').val(tree.releaseDate);
+            $('#releaseDate').val(formatDate(tree.releaseDate));
             $('#spotify').val(urls.spotify);
             $('#youtube').val(urls.youtube);
             $('#applemusic').val(urls.applemusic);
@@ -44,7 +44,7 @@ $(function () {
             description: $('#description').val(),
             cover: $('#cover').val(),
             isPublic: $('#public').prop('checked'),
-            releaseDate: $('#releaseDate').val(),
+            releaseDate: new Date($('#releaseDate').val()).toISOString(),
             urls: {
                 spotify: $('#spotify').val(),
                 youtube: $('#youtube').val(),

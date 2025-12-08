@@ -189,6 +189,13 @@ $(function () {
             }
         });
     });
+
+    $('#copylink').on('click', function () {
+        const link = window.location.href;
+        navigator.clipboard.writeText(link).then(function() {
+            alert('Link copied to clipboard!');
+        });
+    });
 });
 
 function deleteComment(id){

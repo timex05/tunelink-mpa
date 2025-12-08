@@ -8,7 +8,7 @@ $(function () {
             description: $('#description').val(),
             cover: $('#cover').val(),
             isPublic: $('#public').prop('checked'),
-            releaseDate: $('#releaseDate').val() + ":00",
+            releaseDate: new Date($('#releaseDate').val()).toISOString(),
             urls: {
                 spotify: $('#spotify').val(),
                 youtube: $('#youtube').val(),
