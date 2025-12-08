@@ -66,7 +66,7 @@ function getToken(){
 function getImagePathFromUser(user, imgPrefix){
     let imgUrl = user.profileImg?.url;
     if(!imgUrl || imgUrl == ''){
-        imgUrl = `${imgPrefix}images/profile-dummy/${user.profileImg.default}_round.png`;
+        imgUrl = `${imgPrefix}images/profile-dummy/${user.profileImg.default.toLowerCase()}_round.png`;
     }
     return imgUrl;
 }
