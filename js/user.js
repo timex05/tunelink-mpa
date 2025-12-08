@@ -2,7 +2,7 @@ $(function () {
     const urlParams = new URLSearchParams(window.location.search);
     const userId = urlParams.get("id");
     if(!userId || userId == '') {
-        window.location.href = frontendDomain + '/index.html';
+        window.location.href = frontendDomain + '/';
         return;
     }
 

@@ -11,7 +11,7 @@ $(function () {
             success: function (data) {
                 removeToken();
                 alert(data.message);
-                window.location.href = frontendDomain + '/index.html';
+                window.location.href = frontendDomain + '/';
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert('Error: ' + xhr.status + '  ' + thrownError);
@@ -19,7 +19,7 @@ $(function () {
         });
     });
 
-    verifyToken("index.html", false);
+    verifyToken("", false);
 
 });
 

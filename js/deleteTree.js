@@ -1,7 +1,7 @@
 $(function () {
     const treeId = getUrlParam("id");
     if(!treeId || treeId == ""){
-        window.location.href = "../index.html";
+        window.location.href = "/";
     }
     verifyToken(`data/deleteTree.html?id=${treeId}`, true);
 
@@ -19,7 +19,7 @@ $(function () {
         },
         error: function (xhr, ajaxOptions, thrownError) {
             alert('Error: ' + xhr.status + '  ' + thrownError);
-            window.location.href = "../index.html";
+            window.location.href = "/";
         }
     });
     });
