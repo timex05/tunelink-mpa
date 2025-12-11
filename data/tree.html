@@ -22,6 +22,38 @@
         </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
+  <nav class="navbar navbar-expand-1 navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center" href="/">
+                    <img 
+                        src="../images/icon_bg_white.png" 
+                        alt="Logo" 
+                        class="rounded-circle me-2 mr-3"
+                        style="width: 40px; height: 40px; object-fit: cover;"
+                    >
+                    <span class="fs-4">TuneLink</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto ">
+                        <li class="nav-item nlogged ">
+                            <a class="nav-link text-end text-sm-center" href="../auth/login.html"><i class="bi bi-box-arrow-in-right"></i> Login/Signup</a>
+                        </li>
+                        <li class="nav-item logged ">
+                            <a class="nav-link text-end text-sm-center" href="../profile/profile.html"><i class="bi bi-person-fill"></i> Profile</a>
+                        </li>                       
+                        <li class="nav-item logged">
+                            <a class="nav-link text-end text-sm-center" href="../profile/editProfile.html"><i class="bi bi-gear-fill"></i> Settings</a>
+                        </li>
+                        <li class="nav-item logged">
+                            <a class="nav-link text-end text-sm-center" href="../auth/logoff.html"><i class="bi bi-box-arrow-in-left"></i> Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
   <header id="main-header" class="bg-light py-4 border-bottom position-relative overflow-hidden">
     <div id="header-bg" class="position-absolute top-0 start-0 w-100 h-100" 
        style="background-size: cover; background-position: center; filter: blur(7px); z-index:0; opacity: .7;">
@@ -217,9 +249,12 @@
             <div class="row">
                 <div class="col-12 text-center">
                     <p class="mb-2">&copy; 2025 TuneLink. All rights reserved.</p>
-                    <p>
+                     <!-- <p>
                         <a href="" class="text-decoration-none text-white-50 me-3">Imprint</a>
                         <a href="" class="text-decoration-none text-white-50">Data Protection</a>
+                    </p> -->
+                    <p>
+                      <a href="mailto:timex385@gmail.com" class="text-decoration-none text-white-50">Support</a>
                     </p>
                 </div>
             </div>
