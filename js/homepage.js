@@ -28,10 +28,16 @@ $(function () {
         updateData();
     });
 
+    let debounceTimer;
+
     $("#searchinput").on('input', function () {
         const selectedValue = $(this).val();
         query = selectedValue;
-        updateData();
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+            updateData();
+        }, 1000);
+
     });
     updateData();
 
@@ -60,7 +66,7 @@ $(function () {
 function updateData() {
     const $container = $('#treebox');
     $container.empty();
-    for(let i = 0; i < 6; i++){
+    for(let i = 0; i < 8; i++){
         $container.append(getTreeCardSkeleton());
     }
 

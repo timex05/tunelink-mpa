@@ -18,10 +18,12 @@ $(function () {
             const owner = data.tree.owner;
             const urls = data.tree.urls;
 
+
             console.log(data);
             $("#tree-title").text(tree.title);
             $("#tree-subtitle").text(tree.interpret);
             $("#tree-description").text(tree.description);
+            $("#tree-release").text("Release Date: " + new Date(tree.releaseDate).toLocaleDateString());
             $("#tree-like").html(tree.analytics.likes.count + ' <i class="bi bi-heart"></i>');
             if(tree.analytics.likes.liked){
                 $("#tree-like").addClass('active');
@@ -35,6 +37,7 @@ $(function () {
             $("#tree-owner-img").attr('src', `${getImagePathFromUser(owner, "../")}`);
             $("#tree-owner").text(owner.name);
 
+            $('#linkbox').empty();
             if(urls.spotify && urls.spotify != ""){
                 $('#linkbox').append(getUrlDiv('spotify-banner.png', urls.spotify));
             } 
@@ -62,8 +65,19 @@ $(function () {
                 $('#linkbox').append(getUrlDiv('ytmusic-banner.svg', urls.youtubemusic));
 
             } 
+
+            $('#content-placeholder').remove();
+            $('#content').removeClass('d-none');
             
-            
+            const imageUrl = tree.cover // replace with your URL or null
+            const bgDiv = document.getElementById('header-bg');
+
+            if (imageUrl) {
+              bgDiv.style.backgroundImage = `url('${imageUrl}')`;
+            } else {
+              bgDiv.style.display = 'none'; // kein Bild, nur bg-light
+              document.getElementById('main-header').classList.add('bg-light');
+            }
 
 
         },
@@ -215,7 +229,7 @@ function getUrlDiv(banner, url){
       <img src="../images/platform/${banner}" alt="" class="me-2" style="height:40px;">
     </div>
     <a href="${url}" class="btn btn-primary btn-md ps-5 pe-5" target="_blank">
-      <i class="bi bi-play"></i> Play
+      <i class="bi bi-play d-none d-md-inline"></i> Play
     </a>
   </div>`;
 }

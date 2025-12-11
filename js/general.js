@@ -121,7 +121,7 @@ function getTreeCardSkeleton(){
 function getTreeCard(tree, imgPrefix){
     console.log(tree);
     const cardHtml = `
-    <div class="col-6 col-md-4 col-lg-3">
+    <div class="col-12 col-md-4 col-lg-3">
         <div class="card tree-card position-relative text-white overflow-hidden h-100 shadow-sm">
                 
             <!-- Unscharfer Hintergrund -->
@@ -141,7 +141,7 @@ function getTreeCard(tree, imgPrefix){
                         <strong>${tree.owner.name}</strong>
                     </a>
                 </div>
-                <a href="${imgPrefix}data/tree.html?id=${tree.id}" target="_blank" class="text-reset text-decoration-none tree-link">
+                <a href="${imgPrefix}data/tree.html?id=${tree.id}" class="text-reset text-decoration-none tree-link">
                 <!-- Titel -->
                 <h5 class="card-title">${tree.title}</h5>
                 

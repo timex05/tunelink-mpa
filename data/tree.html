@@ -22,52 +22,168 @@
         </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
-    <header class="bg-light py-4 border-bottom">
-        <div class="container">
-            <div class="row align-items-start">
-                <div class="col-md-8">
-                    <h1 id="tree-title" class="mb-2">Tree 1</h1>
-                    <h5 id="tree-subtitle" class="text-muted mb-3">From Interpreter out of Album</h5>
-                    <p id="tree-description" class="text-secondary mb-3">Description, Date</p>
+    <header id="main-header" class="bg-light py-4 border-bottom position-relative overflow-hidden">
+        <div id="header-bg" class="position-absolute top-0 start-0 w-100 h-100" 
+       style="background-size: cover; background-position: center; filter: blur(7px); z-index:0; opacity: .7;"></div>
+        <div class="container" style="z-index: 1;  position: relative;">
+            <div id="content" class="row d-flex justify-content-md-start justify-content-center flex-row flex-md-row flex-wrap d-none">
 
-                    <div class="btn-toolbar gap-2" role="toolbar">
-                        <button id="tree-like" class="btn btn-outline-primary">
-                            12 <i class="bi bi-heart"></i>
-                        </button>
-                        <a id="tree-comment" href="#comment_sec" class="btn btn-outline-info">
-                            3 <i class="bi bi-chat"></i>
-                        </a>
-                    </div>
+              <!-- Left Section -->
+              <div class="d-flex flex-column align-items-start text-start col-8">
+            
+                <h1 id="tree-title" class="mb-1">Tree 1</h1>
+                <h5 id="tree-subtitle" class="text-muted mb-2">From Interpreter out of Album</h5>
+            
+                <!-- Beschreibung -->
+                <p id="tree-description" class="text-secondary mb-1">
+                
+                </p>
+            
+                <!-- Release Date -->
+                <p id="tree-release" class="text-muted mb-2">
+                  Release: 2024-05-03
+                </p>
+            
+                <!-- Buttons -->
+                <div class="d-flex gap-2 flex-nowrap justify-content-center justify-content-md-end">
+                  <button id="tree-like" class="btn btn-outline-primary">
+                    12 <i class="bi bi-heart"></i>
+                  </button>
+                  <a id="tree-comment" href="#comment_sec" class="btn btn-outline-info">
+                    3 <i class="bi bi-chat"></i>
+                  </a>
                 </div>
-
-                <div class="col-md-4 text-md-end mt-3 mt-md-0">
-                    <div class="small text-muted text-center">Shared by</div>
-                    <div class="d-flex justify-content-center mt-2">
-                        <a id="tree-owner-link" href="../data/user.html?id=user1" class="d-flex flex-column align-items-center text-decoration-none text-reset">
-                            <div class="rounded-circle bg-secondary d-flex justify-content-center align-items-center overflow-hidden" style="width:64px;height:64px;">
-                                <img id="tree-owner-img" src="../images/profile-dummy/female_round.png" alt="Username" class="img-fluid" style="width:100%; height:100%; object-fit:cover;">
-                            </div>
-                            <div id="tree-owner" class="mt-2 fw-semibold">Username</div>
-                        </a>
-                    </div>
-                </div>
-
-
+            
+              </div>
+          
+              <!-- Right Section -->
+              <div class="d-flex flex-column align-items-center align-items-md-end text-center text-md-end px-2 ms-md-auto col-4">
+                <div class="small text-muted mb-2">Shared by</div>
+                <a id="tree-owner-link" href="#" class="d-flex flex-column align-items-center text-decoration-none text-reset mb-2">
+                
+                  <div class="rounded-circle bg-secondary d-flex justify-content-center align-items-center overflow-hidden"
+                       style="width:64px;height:64px;">
+                    <img id="tree-owner-img" src="../images/profile-dummy/female_round.png" alt="Username"
+                         class="img-fluid" style="width:100%; height:100%; object-fit:cover;">
+                  </div>
+              
+                  <div id="tree-owner" class="mt-2 fw-semibold">Username</div>
+                </a>
+              </div>
+          
             </div>
+
+
+
+           <div id="content-placeholder" class="row d-flex justify-content-center flex-wrap">
+  
+  <div class="col-8">
+    <h1 class="placeholder-wave mb-1">
+      <span class="placeholder col-12"></span>
+    </h1>
+
+    <h5 class="placeholder-wave mb-2">
+      <span class="placeholder col-12"></span>
+    </h5>
+
+    <p class="placeholder-wave mb-2">
+      
+      <span class="placeholder col-12"></span>
+    </p>
+
+    <div class="d-flex gap-2 mt-1">
+      <button class="btn btn-primary disabled placeholder col-2 col-md-1"></button>
+      <button class="btn btn-info disabled placeholder col-2 col-md-1"></button>
+    </div>
+  </div>
+
+  <div class="col-4 mt-1">
+    <div class="placeholder-wave col-md-4 col-8 ms-md-auto">
+        <div class="placeholder-wave text-center">
+            <span class="placeholder col-12 col-md-8"></span>
+        </div>
+
+        <div class="placeholder-wave text-center mt-2">
+            <div class="placeholder rounded-circle p-4"></div>
+        </div>
+
+
+
+        <div class="placeholder-wave text-center">
+          <span class="placeholder col-12 col-md-8"></span>
+        </div>
+    </div>
+    
+  </div>
+
+</div>
+
+
+
         </div>
     </header>
     
     <main class="flex-grow-1 py-5">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="">
                     <div class="card mb-4">
                         <div class="card-header">
                             <h5 class="mb-0">Choose Your Platform</h5>
                         </div>
                         <div class="card-body">
                             <div id="linkbox" class="list-group">
+                              <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                  <div class="placeholder-wave rounded-circle bg-secondary me-2" style="width:40px; height:40px;"></div>
+                                  <div class="d-flex flex-column">
+                                    <div class="placeholder bg-secondary mb-1" style="width:100px; height:12px;"></div>
+                                    <div class="placeholder bg-secondary" style="width:70px; height:12px;"></div>
+                                  </div>
+                                </div>
+                                <a href="#" class="btn btn-primary btn-md ps-5 pe-5 disabled placeholder-wave">
+                                  <span class="placeholder col-6"></span>
+                                </a>
+                              </div>
+                              <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                  <div class="placeholder-wave rounded-circle bg-secondary me-2" style="width:40px; height:40px;"></div>
+                                  <div class="d-flex flex-column">
+                                    <div class="placeholder bg-secondary mb-1" style="width:100px; height:12px;"></div>
+                                    <div class="placeholder bg-secondary" style="width:70px; height:12px;"></div>
+                                  </div>
+                                </div>
+                                <a href="#" class="btn btn-primary btn-md ps-5 pe-5 disabled placeholder-wave">
+                                  <span class="placeholder col-6"></span>
+                                </a>
+                              </div>
+                              <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                  <div class="placeholder-wave rounded-circle bg-secondary me-2" style="width:40px; height:40px;"></div>
+                                  <div class="d-flex flex-column">
+                                    <div class="placeholder bg-secondary mb-1" style="width:100px; height:12px;"></div>
+                                    <div class="placeholder bg-secondary" style="width:70px; height:12px;"></div>
+                                  </div>
+                                </div>
+                                <a href="#" class="btn btn-primary btn-md ps-5 pe-5 disabled placeholder-wave">
+                                  <span class="placeholder col-6"></span>
+                                </a>
+                              </div>
+
+                              <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                  <div class="placeholder-wave rounded-circle bg-secondary me-2" style="width:40px; height:40px;"></div>
+                                  <div class="d-flex flex-column">
+                                    <div class="placeholder bg-secondary mb-1" style="width:100px; height:12px;"></div>
+                                    <div class="placeholder bg-secondary" style="width:70px; height:12px;"></div>
+                                  </div>
+                                </div>
+                                <a href="#" class="btn btn-primary btn-md ps-5 pe-5 disabled placeholder-wave">
+                                  <span class="placeholder col-6"></span>
+                                </a>
+                              </div>
                             </div>
+
                         </div>
                     </div>
 
@@ -80,7 +196,7 @@
                             <div class="mb-4">
                                 <label for="commentInput" class="form-label">Write a comment</label>
                                 <div class="input-group">
-                                    <textarea class="form-control" id="commentInput" rows="2" maxlength="1000" placeholder="Your comment..."></textarea>
+                                    <textarea class="form-control no-resize" id="commentInput" rows="2" maxlength="1000" placeholder="Your comment..." style="resize: none;"></textarea>
                                     <button id="comment-submit" class="btn btn-primary" type="button">Submit</button>
                                 </div>
                             </div>
@@ -158,4 +274,11 @@
         </div>
     </footer>
 </body>
+<style>
+
+</style>
+
+<script>
+  
+</script>
 </html>
