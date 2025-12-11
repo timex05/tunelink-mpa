@@ -23,13 +23,14 @@ $(function () {
             $("#tree-title").text(tree.title);
             $("#tree-subtitle").text(tree.interpret);
             $("#tree-description").text(tree.description);
-            $("#tree-release").text("Release Date: " + new Date(tree.releaseDate).toLocaleDateString());
-            $("#tree-like").html(tree.analytics.likes.count + ' <i class="bi bi-heart"></i>');
+            $("#tree-clicks-release").text(tree.analytics.clicks + " Clicks • Released " + timeAgo(tree.releaseDate));
+            
             if(tree.analytics.likes.liked){
-                $("#tree-like").addClass('active');
+                $("#tree-like").html(tree.analytics.likes.count + ' <i class="bi bi-heart-fill"></i>');
                 liked = true;
             } else {
                 liked = false;
+                $("#tree-like").html(tree.analytics.likes.count + ' <i class="bi bi-heart"></i>');
             }
             $("#tree-comment").html(tree.analytics.comments + ' <i class="bi bi-chat"></i>');
             $("#tree-owner-link").attr('href', `../data/user.html?id=${owner.id}`);
@@ -77,6 +78,12 @@ $(function () {
             } else {
               bgDiv.style.display = 'none'; // kein Bild, nur bg-light
               document.getElementById('main-header').classList.add('bg-light');
+            }
+
+            if(tree.ytId && tree.ytId != ""){
+                loadPlayer(tree.ytId);
+            } else {
+                $('#video_sec').remove();
             }
 
 
@@ -152,6 +159,7 @@ $(function () {
             alert('Error: ' + xhr.status + '  ' + thrownError);
         }
     });
+    
 
 
 
@@ -202,6 +210,7 @@ $(function () {
             alert('Link copied to clipboard!');
         });
     });
+
 });
 
 function deleteComment(id){
@@ -221,6 +230,24 @@ function deleteComment(id){
             alert('Error: ' + xhr.status + '  ' + thrownError);
         }
     });
+}
+
+var player;
+var youtubeId = '';
+function loadPlayer(_youtubeId){
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    youtubeId = _youtubeId;
+}
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('player', {
+    videoId: youtubeId,
+    playerVars: {
+      'playsinline': 1
+    }
+  });
 }
 
 function getUrlDiv(banner, url){
