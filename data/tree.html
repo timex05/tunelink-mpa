@@ -14,12 +14,6 @@
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/general.js"></script>
     <script src="../js/tree.js"></script>
-        <style>
-            /* Enable native smooth scrolling for fragment links */
-            html { scroll-behavior: smooth; }
-            /* Highlight comments section briefly when navigated via #fragment */
-            #comment_sec:target { box-shadow: 0 0 0 4px rgba(13,110,253,0.12); border-radius: 6px; }
-        </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
   <nav class="navbar navbar-expand-1 navbar-dark bg-dark">
@@ -28,8 +22,7 @@
                     <img 
                         src="../images/icon_bg_white.png" 
                         alt="Logo" 
-                        class="rounded-circle me-2 mr-3"
-                        style="width: 40px; height: 40px; object-fit: cover;"
+                        class="rounded-circle me-2 mr-3 square-40 object-fit-cover"
                     >
                     <span class="fs-4">TuneLink</span>
                 </a>
@@ -58,7 +51,7 @@
     <div id="header-bg" class="position-absolute top-0 start-0 w-100 h-100" 
        style="background-size: cover; background-position: center; filter: blur(7px); z-index:0; opacity: .7;">
     </div>
-    <div class="container" style="z-index: 1;  position: relative;">
+    <div class="container z-1 position-relative" >
       <div id="content" class="row d-flex justify-content-md-start justify-content-center flex-row flex-md-row flex-wrap d-none">
         <!-- Left Section -->
         <div class="d-flex flex-column align-items-start text-start col-8">
@@ -96,10 +89,10 @@
           <div class="small text-muted mb-2">Shared by</div>
           <a id="tree-owner-link" href="#" class="d-flex flex-column align-items-center text-decoration-none text-reset mb-2">
           
-            <div class="rounded-circle bg-secondary d-flex justify-content-center align-items-center overflow-hidden"
-                 style="width:64px;height:64px;">
+            <div class="rounded-circle bg-secondary d-flex justify-content-center align-items-center overflow-hidden">
               <img id="tree-owner-img" src="../images/profile-dummy/female_round.png" alt="Username"
-                   class="img-fluid" style="width:100%; height:100%; object-fit:cover;">
+                   class="img-fluid object-fit-cover square-64"
+              > 
             </div>
         
             <div id="tree-owner" class="mt-2 fw-semibold">Username</div>
@@ -156,7 +149,7 @@
               <div id="linkbox" class="list-group">
                 <div class="list-group-item d-flex justify-content-between align-items-center">
                   <div class="d-flex align-items-center">
-                    <div class="placeholder-wave rounded-circle bg-secondary me-2" style="width:40px; height:40px;"></div>
+                    <div class="placeholder-wave rounded-circle bg-secondary me-2 square-40"></div>
                     <div class="d-flex flex-column">
                       <div class="placeholder bg-secondary mb-1" style="width:100px; height:12px;"></div>
                       <div class="placeholder bg-secondary" style="width:70px; height:12px;"></div>
@@ -168,7 +161,7 @@
                 </div>
                 <div class="list-group-item d-flex justify-content-between align-items-center">
                   <div class="d-flex align-items-center">
-                    <div class="placeholder-wave rounded-circle bg-secondary me-2" style="width:40px; height:40px;"></div>
+                    <div class="placeholder-wave rounded-circle bg-secondary me-2 square-40"></div>
                     <div class="d-flex flex-column">
                       <div class="placeholder bg-secondary mb-1" style="width:100px; height:12px;"></div>
                       <div class="placeholder bg-secondary" style="width:70px; height:12px;"></div>
@@ -180,7 +173,7 @@
                 </div>
                 <div class="list-group-item d-flex justify-content-between align-items-center">
                   <div class="d-flex align-items-center">
-                    <div class="placeholder-wave rounded-circle bg-secondary me-2" style="width:40px; height:40px;"></div>
+                    <div class="placeholder-wave rounded-circle bg-secondary me-2 square-40"></div>
                     <div class="d-flex flex-column">
                       <div class="placeholder bg-secondary mb-1" style="width:100px; height:12px;"></div>
                       <div class="placeholder bg-secondary" style="width:70px; height:12px;"></div>
@@ -192,7 +185,7 @@
                 </div>
                 <div class="list-group-item d-flex justify-content-between align-items-center">
                   <div class="d-flex align-items-center">
-                    <div class="placeholder-wave rounded-circle bg-secondary me-2" style="width:40px; height:40px;"></div>
+                    <div class="placeholder-wave rounded-circle bg-secondary me-2 square-40"></div>
                     <div class="d-flex flex-column">
                       <div class="placeholder bg-secondary mb-1" style="width:100px; height:12px;"></div>
                       <div class="placeholder bg-secondary" style="width:70px; height:12px;"></div>
@@ -261,11 +254,4 @@
         </div>
     </footer>
 </body>
-<style>
-
-</style>
-
-<script>
-  
-</script>
 </html>

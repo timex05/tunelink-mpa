@@ -87,7 +87,7 @@ function getTreeCardSkeleton(){
             <div class="card tree-card position-relative overflow-hidden h-100 shadow-sm">  
                 <div class="card-body position-relative placeholder-wave">
                     <div class="d-flex align-items-center mb-3">
-                        <span class="rounded-circle placeholder me-2" style="width:40px; height:40px;"></span>
+                        <span class="rounded-circle placeholder me-2 square-40"></span>
                         <span class="placeholder col-5"></span>
                     </div>
                     <h5 class="card-title">

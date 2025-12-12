@@ -29,18 +29,18 @@ $(function () {
         const password = $('#password').val();
         const username = $("#username").val();
         const description = $("#description").val();
-        const isNewsLetter = $("#newsletter").val();
+        const isNewsLetter = $("#newsletter").val() == 'on' ? true : false;
 
-        if(!email && email != ""){
+        if(email && email != ""){
             user.email = email;
         }
-        if(!password && password != ""){
+        if(password && password != ""){
             user.password = password;
         }
-        if(!username && username != ""){
+        if(username && username != ""){
             user.name = username;
         }
-        if(!description && description != ""){
+        if(description && description != ""){
             user.description = description;
         }
 

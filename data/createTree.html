@@ -22,8 +22,7 @@
                     <img 
                         src="../images/icon_bg_white.png" 
                         alt="Logo" 
-                        class="rounded-circle me-2 mr-3"
-                        style="width: 40px; height: 40px; object-fit: cover;"
+                        class="rounded-circle me-2 mr-3 square-40 object-fit-cover"
                     >
                     <span class="fs-4">TuneLink</span>
                 </a>
@@ -174,26 +173,5 @@
             </div>
         </div>
     </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var btn = document.getElementById('openSpotify');
-            var input = document.getElementById('spotify');
-            if (!btn || !input) return;
-            btn.addEventListener('click', function (e) {
-                e.preventDefault();
-                var url = input.value.trim();
-                if (!url) {
-                    alert('Bitte geben Sie zuerst eine Spotify-URL ein.');
-                    input.focus();
-                    return;
-                }
-                // ensure scheme
-                if (!/^https?:\/\//i.test(url)) {
-                    url = 'https://' + url;
-                }
-                window.open(url, '_blank', 'noopener');
-            });
-        });
-    </script>
 </body>
 </html>

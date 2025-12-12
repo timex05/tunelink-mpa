@@ -23,8 +23,7 @@
                     <img 
                         src="../images/icon_bg_white.png" 
                         alt="Logo" 
-                        class="rounded-circle me-2 mr-3"
-                        style="width: 40px; height: 40px; object-fit: cover;"
+                        class="rounded-circle me-2 mr-3 square-40 object-fit-cover"
                     >
                     <span class="fs-4">TuneLink</span>
                 </a>
@@ -51,20 +50,22 @@
     <main class="flex-grow-1 py-5">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-6">
+                <div class="col-12 col-md-10 col-lg-8">
                     <div class="card">
                         <div class="card-header bg-dark text-white">
                             <h3 class="card-title mb-0">Edit Your Profile</h3>
                         </div>
                         <div class="card-body">
                             <!-- Profile Picture Section -->
-                            <div class="text-center mb-4 position-relative d-inline-block mx-auto w-100">
-                                <div class="mx-auto" style="width: fit-content;">
-                                    <img id="profilePicturePreview" src="https://api.dicebear.com/9.x/avataaars/svg?seed=default" alt="Profile Picture" class="rounded-circle" style="width: 120px; height: 120px; object-fit: cover;">
-                                    <a href="editProfileAvatar.html" class="btn btn-sm btn-primary rounded-circle position-absolute" style="bottom: 0; right: 0; width: 40px; height: 40px; padding: 0; display: flex; align-items: center; justify-content: center;">
+                            <div class="text-center mb-4">
+                                <div class="position-relative d-inline-block">
+                                    <img id="profilePicturePreview" src="https://api.dicebear.com/9.x/avataaars/svg?seed=default" alt="Profile Picture" class="rounded-circle object-fit-cover" style="width: 120px; height: 120px;">
+                                    <a href="editProfileAvatar.html" class="btn btn-sm btn-primary rounded-circle position-absolute bottom-0 end-0 square-30 p-0 d-flex align-items-center justify-content-center">
                                         <i class="bi bi-pencil"></i>
                                     </a>
+
                                 </div>
+                                
                             </div>
 
                             <form id="editform">

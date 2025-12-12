@@ -109,8 +109,8 @@ $(function () {
                                 <div class="d-flex justify-content-between align-items-start">
                                     <div class="d-flex align-items-start">
                                          <a href="user.html?id=${comment.owner.id}">
-                                            <div class="rounded-circle overflow-hidden me-2 mr-2" style="width:40px; height:40px;">
-                                                <img src="${getImagePathFromUser(comment.owner, "../")}" alt="User" class="img-fluid" style="width:100%; height:100%; object-fit:cover;">
+                                            <div class="rounded-circle overflow-hidden me-2 mr-2 square-40">
+                                                <img src="${getImagePathFromUser(comment.owner, "../")}" alt="User" class="img-fluid object-fit-cover" width="100%" height="100%">
                                             </div>
                                          </a>
                                         <div>
@@ -136,8 +136,8 @@ $(function () {
                                 <div class="d-flex justify-content-between align-items-start">
                                     <div class="d-flex align-items-start">
                                          <a href="user.html?id=${comment.owner.id}">
-                                            <div class="rounded-circle overflow-hidden me-2 mr-2" style="width:40px; height:40px;">
-                                                <img src="${getImagePathFromUser(comment.owner, "../")}" alt="User" class="img-fluid" style="width:100%; height:100%; object-fit:cover;">
+                                            <div class="rounded-circle overflow-hidden me-2 mr-2 square-40">
+                                                <img src="${getImagePathFromUser(comment.owner, "../")}" alt="User" class="img-fluid object-fit-cover" width="100%" height="100%">
                                             </div>
                                          </a>
                                         <div>
@@ -253,7 +253,7 @@ function onYouTubeIframeAPIReady() {
 function getUrlDiv(banner, url){
   return `<div class="list-group-item d-flex justify-content-between align-items-center">
     <div class="d-flex align-items-center">
-      <img src="../images/platform/${banner}" alt="" class="me-2" style="height:40px;">
+      <img src="../images/platform/${banner}" alt="" class="me-2" height="40px">
     </div>
     <a href="${url}" class="btn btn-primary btn-md ps-5 pe-5" target="_blank">
       <i class="bi bi-play d-none d-md-inline"></i> Play
