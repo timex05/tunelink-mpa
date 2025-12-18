@@ -1,8 +1,12 @@
 $(function () {
-    $('#loginform').on('submit', function (e) {
+    $('#loginform').on('submit', async function (e) {
         e.preventDefault();
         const email = $('#email').val();
         const password = $('#password').val();
+
+        const token = await grecaptcha.execute("6Lefwy4sAAAAAAG0fG08P3h5o5hg83BBZMdat-cZ", {
+          action: "reset_password"
+        });
 
 
         const redirect = getUrlParam("r");
@@ -12,7 +16,7 @@ $(function () {
             type: 'post',
             dataType: 'json',
             contentType: 'application/json; charset=UTF-8',
-            data: JSON.stringify({ credentials: { email: email, password: password } }),
+            data: JSON.stringify({ credentials: { email: email, password: password }, captchaToken: token }),
             success: function (data) {
                 setToken(data.token);
                 window.location.href = frontendDomain + (redirect ? "/" + redirect : '');
