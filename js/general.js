@@ -1,12 +1,12 @@
 
 // prod
-// const backendDomain = "https://tunelink-55a280dd7187.herokuapp.com";
-// const frontendDomain = "https://tunelink-mpa.vercel.app"
+const backendDomain = "https://tunelink-55a280dd7187.herokuapp.com";
+const frontendDomain = "https://tunelink-mpa.vercel.app"
 
 
 // dev
-const backendDomain = "http://localhost:3000";
-const frontendDomain = "http://127.0.0.1:5500";
+// const backendDomain = "http://localhost:3000";
+// const frontendDomain = "http://127.0.0.1:5500";
 
 
 const urlParams = new URLSearchParams(window.location.search);
