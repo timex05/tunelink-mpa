@@ -36,7 +36,7 @@ function onGoogleLogin(response) {
         type: 'post',
         dataType: 'json',
         contentType: 'application/json; charset=UTF-8',
-        data: JSON.stringify({ googleToken: idToken }),
+        data: JSON.stringify({ googleToken: idToken, website_url: frontendDomain }),
         success: function (data) {
             setToken(data.token);
             window.location.href = frontendDomain + "/" + (redirect ? redirect : '');

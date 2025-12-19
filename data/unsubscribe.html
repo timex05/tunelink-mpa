@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - TuneLink</title>
+    <title>unsubscribe - TuneLink</title>
+    <link rel="shortcut icon" href="../images/icon.ico" type="image/x-icon">
+
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/bootstrap-icons.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href="../images/icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/general.css">
+    
     <script src="../js/jquery-3.7.1.min.js"></script>
     <script src="../js/general.js"></script>
-    <script src="../js/register.js"></script>
-
-    <script src="https://www.google.com/recaptcha/api.js?render=6Lefwy4sAAAAAAG0fG08P3h5o5hg83BBZMdat-cZ"></script>
-
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="../js/unsubscribe.js"></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
     <header>
@@ -32,58 +31,43 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
+                    <ul class="navbar-nav ms-auto ">
+                        <li class="nav-item nlogged ">
                             <a class="nav-link text-end text-sm-center text-end text-sm-center" href="../auth/login.html"><i class="bi bi-box-arrow-in-right"></i> Login/Signup</a>
+                        </li>
+                        <li class="nav-item logged ">
+                            <a class="nav-link text-end text-sm-center text-end text-sm-center" href="../profile/profile.html"><i class="bi bi-person-fill"></i> Profile</a>
+                        </li>                       
+                        <li class="nav-item logged">
+                            <a class="nav-link text-end text-sm-center text-end text-sm-center" href="../profile/editProfile.html"><i class="bi bi-gear-fill"></i> Settings</a>
+                        </li>
+                        <li class="nav-item logged">
+                            <a class="nav-link text-end text-sm-center text-end text-sm-center" href="../auth/logoff.html"><i class="bi bi-box-arrow-in-left"></i> Logout</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-
+    
     <main class="flex-grow-1 py-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header bg-dark text-white">
-                            <h3 class="card-title mb-0">Register on TuneLink</h3>
+                    <div class="card text-center">
+                        <div class="card-header bg-warning">
+                            <h3 id="title" class="card-title mb-0"></h3>
                         </div>
-                        <div class="card-body">
-                            <form id="registerform">
-                                <div class="mb-3">
-                                    <label for="username" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="username" maxlength="40" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" maxlength="40" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="password" minlength="8" maxlength="40" required>
-                                </div>
-                                <button type="submit" class="btn btn-primary w-100 mb-3">Sign up</button>
-                                <div class="text-center mb-3">
-                                    <span class="text-muted">or</span>
-                                </div>
-                                <div class="g_id_signin" data-type="standard"></div>
-                                <hr>
-                                <p class="text-center">Already have an account? <a href="login.html">Log in</a></p>
-                            </form>
+                        <div class="card-body py-5">
+                            <p class="lead mb-4">Are you sure you want to unsubscribe from the newsletter?</p>
+                            <button id="unsubscribe" class="btn btn-danger btn-lg">Unsubscribe</button>
+                            <a href="/" class="btn btn-secondary btn-lg ms-2">Cancel</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-
-    <div id="g_id_onload"
-     data-client_id="297888719014-rav4ooblecl20gvid0h7n9n20i2t41gu.apps.googleusercontent.com"
-     data-context="signin"
-     data-callback="onGoogleLogin">
-</div>
 
     <footer class="bg-dark text-white py-4 mt-5">
         <div class="container-fluid">

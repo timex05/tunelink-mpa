@@ -51,7 +51,7 @@ $(function () {
             type: 'post',
             dataType: 'json',
             contentType: 'application/json; charset=UTF-8',
-            data: JSON.stringify({ email: email }),
+            data: JSON.stringify({ email: email, website_url: frontendDomain, unsubscribe_url: `${frontendDomain}/data/unsubscribe.html?email=${email}` }),
             success: function (data) {
                 alert("Signed up for newsletter.");
             },
