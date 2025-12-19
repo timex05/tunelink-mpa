@@ -35,35 +35,35 @@ $(function () {
             $("#tree-comment").html(tree.analytics.comments + ' <i class="bi bi-chat"></i>');
             $("#tree-owner-link").attr('href', `../data/user.html?id=${owner.id}`);
 
-            $("#tree-owner-img").attr('src', `${getImagePathFromUser(owner, "../")}`);
+            $("#tree-owner-img").attr('src', `${getImagePathFromUser(owner, "64x64")}`);
             $("#tree-owner").text(owner.name);
 
             $('#linkbox').empty();
             if(urls.spotify && urls.spotify != ""){
-                $('#linkbox').append(getUrlDiv('spotify-banner.png', urls.spotify));
+                $('#linkbox').append(getUrlDiv('spotify.png', urls.spotify));
             } 
 
             if(urls.youtube && urls.youtube != ""){
-                $('#linkbox').append(getUrlDiv('youtube-banner.png', urls.youtube));
+                $('#linkbox').append(getUrlDiv('youtube.png', urls.youtube));
             } 
 
             if(urls.applemusic && urls.applemusic != ""){
-                $('#linkbox').append(getUrlDiv('applemusic-banner.png', urls.applemusic));
+                $('#linkbox').append(getUrlDiv('applemusic.png', urls.applemusic));
 
             } 
 
             if(urls.amazonmusic && urls.amazonmusic != ""){
-                $('#linkbox').append(getUrlDiv('amazonmusic-banner.png', urls.amazonmusic));
+                $('#linkbox').append(getUrlDiv('amazonmusic.png', urls.amazonmusic));
 
             } 
 
             if(urls.soundcloud && urls.soundcloud != ""){
-                $('#linkbox').append(getUrlDiv('soundcloud.banner.svg', urls.soundcloud));
+                $('#linkbox').append(getUrlDiv('soundcloud.svg', urls.soundcloud));
 
             }
 
             if(urls.youtubemusic && urls.youtubemusic != ""){
-                $('#linkbox').append(getUrlDiv('ytmusic-banner.svg', urls.youtubemusic));
+                $('#linkbox').append(getUrlDiv('ytmusic.svg', urls.youtubemusic));
 
             } 
 
@@ -110,7 +110,7 @@ $(function () {
                                     <div class="d-flex align-items-start">
                                          <a href="user.html?id=${comment.owner.id}">
                                             <div class="rounded-circle overflow-hidden me-2 mr-2 square-40">
-                                                <img src="${getImagePathFromUser(comment.owner, "../")}" alt="User" class="img-fluid object-fit-cover" width="100%" height="100%">
+                                                <img src="${getImagePathFromUser(comment.owner, "40x40")}" alt="User" class="img-fluid object-fit-cover" width="100%" height="100%">
                                             </div>
                                          </a>
                                         <div>
@@ -137,7 +137,7 @@ $(function () {
                                     <div class="d-flex align-items-start">
                                          <a href="user.html?id=${comment.owner.id}">
                                             <div class="rounded-circle overflow-hidden me-2 mr-2 square-40">
-                                                <img src="${getImagePathFromUser(comment.owner, "../")}" alt="User" class="img-fluid object-fit-cover" width="100%" height="100%">
+                                                <img src="${getImagePathFromUser(comment.owner, "40x40")}" alt="User" class="img-fluid object-fit-cover" width="100%" height="100%">
                                             </div>
                                          </a>
                                         <div>
@@ -253,7 +253,7 @@ function onYouTubeIframeAPIReady() {
 function getUrlDiv(banner, url){
   return `<div class="list-group-item d-flex justify-content-between align-items-center">
     <div class="d-flex align-items-center">
-      <img src="../images/platform/${banner}" alt="" class="me-2" height="40px">
+      <img src="https://tunelink-static.vercel.app/assets/images/platform/banner/${banner}" alt="" class="me-2" height="40px">
     </div>
     <a href="${url}" class="btn btn-primary btn-md ps-5 pe-5" target="_blank">
       <i class="bi bi-play d-none d-md-inline"></i> Play

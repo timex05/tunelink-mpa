@@ -63,10 +63,16 @@ function getToken(){
     return JSON.parse(localStorage.getItem('token'));
 }
 
-function getImagePathFromUser(user, imgPrefix){
+function getImagePathFromUser(user, size){
+    size = size || "";
     let imgUrl = user.profileImg?.url;
     if(!imgUrl || imgUrl == ''){
-        imgUrl = `${imgPrefix}images/profile-dummy/${user.profileImg.default.toLowerCase()}_round.png`;
+        if(user.profileImg.default.toLowerCase() == 'male'){
+            imgUrl = `https://tunelink-static.vercel.app/assets/images/avatars/male/male_round${size == "" ? "" : "_" + size}.png`;
+        } else {
+            imgUrl = `https://tunelink-static.vercel.app/assets/images/avatars/female/female_round${size == "" ? "" : "_" + size}.png`;
+        }
+        
     }
     return imgUrl;
 }
@@ -118,7 +124,7 @@ function getTreeCardSkeleton(){
 }
 
 
-function getTreeCard(tree, imgPrefix){
+function getTreeCard(tree){
     console.log(tree);
     const cardHtml = `
     <div class="col-12 col-md-4 col-lg-3">
@@ -126,22 +132,22 @@ function getTreeCard(tree, imgPrefix){
                 
             <!-- Unscharfer Hintergrund -->
             <div class="bg-blur" 
-                 style="background-image: url('${tree.cover || imgPrefix + "images/dummyTreeCover.png"}');">
+                 style="background-image: url('${tree.cover || "https://tunelink-static.vercel.app/assets/images/tunelink/logo/dummyTreeCover.png"}');">
             </div>
                 
             <div class="card-body position-relative">
                 
                 <!-- User Bereich -->
                 <div class="d-flex align-items-center mb-3">
-                    <a href="${imgPrefix}data/user.html?id=${tree.owner.id}" class="d-flex align-items-center text-white text-decoration-none user-link">
-                        <img src="${getImagePathFromUser(tree.owner, imgPrefix)}" 
+                    <a href="/data/user.html?id=${tree.owner.id}" class="d-flex align-items-center text-white text-decoration-none user-link">
+                        <img src="${getImagePathFromUser(tree.owner, "40x40")}" 
                              class="rounded-circle me-2" 
                              width="40" height="40" 
                              alt="Profile">
                         <strong>${tree.owner.name}</strong>
                     </a>
                 </div>
-                <a href="${imgPrefix}data/tree.html?id=${tree.id}" class="text-reset text-decoration-none tree-link">
+                <a href="/data/tree.html?id=${tree.id}" class="text-reset text-decoration-none tree-link">
                 <!-- Titel -->
                 <h5 class="card-title">${tree.title}</h5>
                 
@@ -167,11 +173,11 @@ function getTreeCard(tree, imgPrefix){
                 <!-- Klickbare Tree-Seite -->
                 <div class="mt-3">
                     ${tree.permissions.canEdit ? 
-                        `<a href="${imgPrefix}data/editTree.html?id=${tree.id}" target="_blank" class="btn btn-primary btn-sm">
+                        `<a href="/data/editTree.html?id=${tree.id}" target="_blank" class="btn btn-primary btn-sm">
                             <i class="bi bi-pencil-fill"></i>
                         </a> ` : ""}
                     ${tree.permissions.canDelete ? 
-                        `<a href="${imgPrefix}data/deleteTree.html?id=${tree.id}" target="_blank" class="btn btn-danger btn-sm">
+                        `<a href="/data/deleteTree.html?id=${tree.id}" target="_blank" class="btn btn-danger btn-sm">
                             <i class="bi bi-trash-fill"></i>
                         </a>
                         ` 

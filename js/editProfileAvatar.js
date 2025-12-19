@@ -15,10 +15,10 @@ function selectAvatar($label) {
     const avatar = $radio.prop('checked', true).val();
 
     if(avatar == 'male'){
-        profileImg.url = undefined;
+        profileImg.url = "";
         profileImg.default = 'MALE';
     } else if(avatar == 'female'){
-        profileImg.url = undefined;
+        profileImg.url = "";
         profileImg.default = 'FEMALE';
     } else {
         profileImg.url = avatar;

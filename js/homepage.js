@@ -80,7 +80,7 @@ function updateData() {
             const $container = $('#treebox');
             $container.empty();
             data.treelist.forEach(tree => {   
-                $container.append(getTreeCard(tree, ""));
+                $container.append(getTreeCard(tree));
             });
         },
         error: function (xhr, ajaxOptions, thrownError) {

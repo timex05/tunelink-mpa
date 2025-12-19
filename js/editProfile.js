@@ -15,7 +15,7 @@ $(function () {
             $("#email").val(data.user.email);
             $("#description").val(data.user.description);
             $("#newsletter").prop('checked', data.user.isNewsLetter);
-            $("#profilePicturePreview").prop('src', getImagePathFromUser(data.user, "../"));
+            $("#profilePicturePreview").prop('src', getImagePathFromUser(data.user));
             user = data.user;
         },
         error: function (xhr, ajaxOptions, thrownError) {

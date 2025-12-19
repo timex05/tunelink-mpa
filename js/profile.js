@@ -7,7 +7,7 @@ $(function() {
         contentType: 'application/json; charset=UTF-8',
         success: function (data) {
             console.log(data);
-            $('#user-image').attr('src', `${getImagePathFromUser(data.user, "../")}`);
+            $('#user-image').attr('src', `${getImagePathFromUser(data.user, "64x64")}`);
             $('#user-name').text(data.user.name);
             $('#user-description').text(data.user.description);
             $('#profilearea').removeClass('d-none');
@@ -34,7 +34,7 @@ $(function() {
             }
 
             data.treelist.forEach(tree => {
-                $container.append(getTreeCard(tree, "../"));
+                $container.append(getTreeCard(tree));
             });
         },
         error: function (xhr, ajaxOptions, thrownError) {
@@ -55,7 +55,7 @@ $(function() {
                 $container.append(nothingBox());
             }
             data.treelist.forEach(tree => {
-                $container.append(getTreeCard(tree, "../"));
+                $container.append(getTreeCard(tree));
             });
         },
         error: function (xhr, ajaxOptions, thrownError) {
@@ -76,7 +76,7 @@ $(function() {
                 $container.append(nothingBox());
             }
             data.treelist.forEach(tree => {
-                $container.append(getTreeCard(tree, "../"));
+                $container.append(getTreeCard(tree));
             });
         },
         error: function (xhr, ajaxOptions, thrownError) {

@@ -13,7 +13,7 @@ $(function () {
         contentType: 'application/json; charset=UTF-8',
         success: function (data) {
             console.log(data);
-            $('#user-image').attr('src', `${getImagePathFromUser(data.user, "../")}`);
+            $('#user-image').attr('src', `${getImagePathFromUser(data.user, "64x64")}`);
             $('#user-name').text(data.user.name);
             $('#user-description').text(data.user.description);
 
@@ -38,7 +38,7 @@ $(function () {
 
             console.log(data);
             data.treelist.forEach(tree => {
-                $box.append(getTreeCard(tree, "../"));
+                $box.append(getTreeCard(tree));
             });
         },
         error: function (xhr, ajaxOptions, thrownError) {
