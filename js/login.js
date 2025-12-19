@@ -16,7 +16,7 @@ $(function () {
             type: 'post',
             dataType: 'json',
             contentType: 'application/json; charset=UTF-8',
-            data: JSON.stringify({ credentials: { email: email, password: password }, captchaToken: token }),
+            data: JSON.stringify({ credentials: { email: email, password: password }, captchaToken: token, website_url: frontendDomain }),
             success: function (data) {
                 setToken(data.token);
                 window.location.href = frontendDomain + (redirect ? "/" + redirect : '');
