@@ -1,6 +1,6 @@
 # TuneLink Multi-Page Application (MPA)
 
-This repository contains the static frontend for TuneLink (Multi-Page Application). It provides HTML, CSS and client-side JavaScript that interact with the TuneLink backend API.
+Simple Multi-Page Application for TuneLink. This repository is part of the [TuneLink project](https://github.com/timex05/tunelink).
 
 ## Summary
 
