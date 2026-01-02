@@ -2,7 +2,7 @@
 
 Simple Multi-Page Application for TuneLink. This repository is part of the [TuneLink project](https://github.com/timex05/tunelink).
 
-## Summary
+## About
 
 The TuneLink MPA is a simple, static frontend that supports browsing and managing linktrees, user profiles, authentication flows, and basic social interactions such as likes and comments. It is intended to be used together with the TuneLink backend (Express + Prisma).
 
