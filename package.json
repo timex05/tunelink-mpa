@@ -1,0 +1,24 @@
+{
+  "name": "tunelink-mpa",
+  "version": "1.0.0",
+  "description": "Simple Multi-Page Application for TuneLink. This repository is part of the [TuneLink project](https://github.com/timex05/tunelink).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timex05/tunelink-mpa.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/timex05/tunelink-mpa/issues"
+  },
+  "homepage": "https://github.com/timex05/tunelink-mpa#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
