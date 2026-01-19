@@ -1,7 +1,7 @@
 
 // prod
 const backendDomain = "https://tunelink-55a280dd7187.herokuapp.com";
-const frontendDomain = "https://tunelink-mpa.vercel.app"
+const frontendDomain = "https://tunelink-mpa-94155717b125.herokuapp.com/"
 
 
 // dev
