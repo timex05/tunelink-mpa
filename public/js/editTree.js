@@ -30,7 +30,7 @@ $(function () {
             $('#youtubeId').val(tree.ytId);
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            alert('Error: ' + xhr.status + '  ' + thrownError);
+            alert('Error: ' + xhr.status + '  ' + thrownError  + '\n Message: ' + xhr.responseJSON.message);
             window.location.href = "/";
         }
     });
@@ -71,7 +71,7 @@ $(function () {
                 window.location.href = "../profile/profile.html";
             },
             error: function (xhr, ajaxOptions, thrownError) {
-                alert('Error: ' + xhr.status + '  ' + thrownError);
+                alert('Error: ' + xhr.status + '  ' + thrownError  + '\n Message: ' + xhr.responseJSON.message);
             }
         });
     });

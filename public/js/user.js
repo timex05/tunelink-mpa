@@ -23,7 +23,7 @@ $(function () {
             $('#profilearea-skeleton').addClass('d-none');
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            alert('Error: ' + xhr.status + '  ' + thrownError);
+            alert('Error: ' + xhr.status + '  ' + thrownError  + '\n Message: ' + xhr.responseJSON.message);
         }
     });
 
@@ -42,7 +42,7 @@ $(function () {
             });
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            alert('Error: ' + xhr.status + '  ' + thrownError);
+            alert('Error: ' + xhr.status + '  ' + thrownError  + '\n Message: ' + xhr.responseJSON.message);
         }
     });
 });

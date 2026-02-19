@@ -21,7 +21,7 @@ $(function () {
                 window.location.href = frontendDomain + "/auth/login.html";
             },
             error: function (xhr, ajaxOptions, thrownError) {
-                alert('Error: ' + xhr.status + '  ' + thrownError);
+                alert('Error: ' + xhr.status + '  ' + thrownError  + '\n Message: ' + xhr.responseJSON.message);
             }
         });
     });

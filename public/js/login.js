@@ -22,7 +22,7 @@ $(function () {
                 window.location.href = frontendDomain + (redirect ? "/" + redirect : '');
             },
             error: function (xhr, ajaxOptions, thrownError) {
-                alert('Error: ' + xhr.status + '  ' + thrownError);
+                alert('Error: ' + xhr.status + '  ' + thrownError  + '\n Message: ' + xhr.responseJSON.message);
             }
         });
     });
@@ -42,7 +42,7 @@ function onGoogleLogin(response) {
             window.location.href = frontendDomain + "/" + (redirect ? redirect : '');
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            alert('Error: ' + xhr.status + '  ' + thrownError);
+            alert('Error: ' + xhr.status + '  ' + thrownError  + '\n Message: ' + xhr.responseJSON.message);
         }
     });
 }

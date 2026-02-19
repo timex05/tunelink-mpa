@@ -56,7 +56,7 @@ $(function () {
                 alert("Signed up for newsletter.");
             },
             error: function (xhr, ajaxOptions, thrownError) {
-                alert('Error: ' + xhr.status + '  ' + thrownError);
+                alert('Error: ' + xhr.status + '  ' + thrownError  + '\n Message: ' + xhr.responseJSON.message);
             }
         });
     });
@@ -84,7 +84,7 @@ function updateData() {
             });
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            alert('Error: ' + xhr.status + '  ' + thrownError);
+            alert('Error: ' + xhr.status + '  ' + thrownError  + '\n Message: ' + xhr.responseJSON.message);
         }
     });
 

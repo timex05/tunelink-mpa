@@ -18,7 +18,7 @@ $(function(){
                 window.location.href = frontendDomain;
             },
             error: function (xhr, ajaxOptions, thrownError) {
-                alert('Error: ' + xhr.status + '  ' + thrownError);
+                alert('Error: ' + xhr.status + '  ' + thrownError  + '\n Message: ' + xhr.responseJSON.message);
                 window.location.href = frontendDomain;
             }
 
