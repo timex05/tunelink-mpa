@@ -1,6 +1,6 @@
-# TuneLink Multi-Page Application (MPA)
+# TuneLink Multi Page Application (MPA)
 
-Repository Ccontaining the Multi Page Application
+Repository Containing the Multi Page Application
 
 ## See also
 
